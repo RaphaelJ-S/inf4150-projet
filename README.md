@@ -1,6 +1,6 @@
 # inf4150-projet
 
-## Membre de l'équipe
+## Membres de l'équipe
 
 - Raphaël Jacob-Simard - JACR26038907
 - Yan-Alexandre Leclerc - \*\*\*
