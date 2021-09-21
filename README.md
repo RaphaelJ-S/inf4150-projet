@@ -3,7 +3,7 @@
 ## Membres de l'équipe
 
 - Raphaël Jacob-Simard - JACR26038907
-- Yan-Alexandre Leclerc - \*\*\*
+- Yan-Alexandre Leclerc - LECY20069604
 
 ## Consignes d'installation
 
