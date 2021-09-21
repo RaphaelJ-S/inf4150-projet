@@ -9,8 +9,12 @@ export default function IdentiteFormulaire() {
       Cellulaire
       Courriel
        */
-    <div className="formulaire-body">
-      <h3>Formulaire Identite</h3>
-    </div>
+      <>
+          <section className="text-center">
+              <main className="form-signin">
+
+              </main>
+          </section>
+      </>
   );
 }
