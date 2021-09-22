@@ -73,7 +73,7 @@ export default function IdentiteFormulaire() {
                           <label htmlFor="floatingEmail">
                               <ion-icon className="text-primary"
                                         name="person-outline"></ion-icon>
-                              Email
+                              Courriel
                           </label>
                       </div>
 

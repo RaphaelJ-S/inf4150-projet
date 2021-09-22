@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import IdentiteFormulaire from "./IdentiteFormulaire";
 import AdresseFormulaire from "./AdresseFormulaire";
+import {Button} from "react-bootstrap";
+import Logo from "../../assets/images/fiche_de_visite.png";
+
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -24,24 +27,32 @@ export default function FicheVisite() {
   //pourrait se déplacer aux différentes pages du formulaire.
   return (
     <div className="fichevisite-main">
-      <h3>Fiche de Visite</h3>
+      <div className="text-center">
+      <img
+          className="mb-4"
+          src={Logo}
+          alt="logo"
+          width="270"
+          height="150"
+      />{" "}
+      </div>
       {pages[page]}
-      <div className="boutons-footer">
+      <div className="text-center">
+
         {/* bouton pour passer à la page précédente */}
-        <button
-          className="btn btn-precedent"
-          onClick={() => changerPage(page - 1)}
+        <Button variant="outline-danger"
+                className="btn btn-precedent"
+                onClick={() => changerPage(page - 1)}
         >
           Précedent
-        </button>
+        </Button>
         {/* bouton pour passer à la page suivante */}
-
-        <button
-          className="btn btn-suivant"
-          onClick={() => changerPage(page + 1)}
+        <Button variant="outline-success"
+                className="btn btn-suivant"
+                onClick={() => changerPage(page + 1)}
         >
           Suivant
-        </button>
+        </Button>
       </div>
     </div>
   );
