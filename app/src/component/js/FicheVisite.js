@@ -4,6 +4,9 @@ import AdresseFormulaire from "./AdresseFormulaire";
 import BarreProgression from "./BarreProgression";
 import { Button } from "react-bootstrap";
 import Logo from "../../assets/images/fiche_de_visite.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -30,26 +33,27 @@ export default function FicheVisite() {
       <div className="text-center">
         <img className="mb-4" src={Logo} alt="logo" width="270" height="150" />{" "}
       </div>
-      <BarreProgression page={page} />
-      {pages[page]}
-      <div className="text-center">
-        {/* bouton pour passer à la page précédente */}
-        <Button
-          variant="outline-danger"
-          className="btn btn-precedent"
+      <div className="container-progres">
+        <button
+          className="btn-precedent"
           onClick={() => changerPage(page - 1)}
+          disabled={page <= 0}
         >
-          Précedent
-        </Button>
-        {/* bouton pour passer à la page suivante */}
-        <Button
-          variant="outline-success"
-          className="btn btn-suivant"
+          <FontAwesomeIcon icon={faAngleDoubleLeft} size="3x"></FontAwesomeIcon>
+        </button>
+        <BarreProgression page={page} />
+        <button
+          className="btn-suivant"
           onClick={() => changerPage(page + 1)}
+          disabled={page >= pages.length - 1}
         >
-          Suivant
-        </Button>
+          <FontAwesomeIcon
+            icon={faAngleDoubleRight}
+            size="3x"
+          ></FontAwesomeIcon>
+        </button>
       </div>
+      {pages[page]}
     </div>
   );
 }

@@ -4,9 +4,18 @@ main {
   height: 100%;
   font-family: sans-serif;
 }
-.progress {
+.container-progres {
   font-family: sans-serif;
-  text-align: center;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+.btn-precedent,
+.btn-suivant {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
 }
 
 #root {
