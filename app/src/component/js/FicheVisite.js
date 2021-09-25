@@ -22,7 +22,6 @@ export default function FicheVisite() {
   const [page, setPage] = useState(0);
 
   function changerPage(numPage) {
-    console.log(numPage);
     setPage(numPage);
   }
   //Il faudrait avoir une façon de se déplacer entre les différentes parties du formulaire. Peut-être un bouton
