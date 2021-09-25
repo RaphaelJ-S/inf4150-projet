@@ -4,24 +4,6 @@ main {
   height: 100%;
   font-family: sans-serif;
 }
-.container-progres {
-  font-family: sans-serif;
-  display: flex;
-  flex-flow: row;
-  justify-content: space-evenly;
-}
-.btn-precedent,
-.btn-suivant {
-  width: fit-content;
-  height: fit-content;
-  background-color: transparent;
-  border: none;
-  color: orange;
-}
-.button:disabled,
-button[disabled] {
-  color: #979696;
-}
 
 #root {
   height: 100%;
@@ -38,7 +20,39 @@ section {
   padding-bottom: 40px;
   background-color: #f5f5f5;
 }
+/*
+Le style de la barre de progression
+*/
+.container-progres {
+  font-family: sans-serif;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+.btn-precedent,
+.btn-suivant {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  border: none;
+  color: orange;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.button:disabled,
+button[disabled] {
+  color: #979696;
+}
+.MuiStepLabel-iconContainer {
+  transform: scale(1.25);
+}
+.MuiStepIcon-text {
+  color: transparent;
+}
 
+/*
+Fin de barre de progression
+*/
 .form-signin {
   width: 100%;
   max-width: 330px;
