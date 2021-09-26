@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import IdentiteFormulaire from "./IdentiteFormulaire";
+import HabitationFormulaire from "./HabitationFormulaire";
+
 import AdresseFormulaire from "./AdresseFormulaire";
 import RangementFormulaire from "./RangementFormulaire";
 import ServicesFormulaire from "./ServicesFormulaire";
-import SpecificationsFormulaire from "./SpecificationsFormulaire";
+import SpecExterieurFormulaire from "./SpecExterieurFormulaire";
+import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
 import BarreProgression from "./BarreProgression";
 import { Button } from "react-bootstrap";
 import Logo from "../../assets/images/fiche_de_visite.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDoubleRight } from "@fortawesome/free-solid-svg-icons";
-import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faAngleDoubleRight,
+  faAngleDoubleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -17,22 +22,38 @@ import { faAngleDoubleLeft } from "@fortawesome/free-solid-svg-icons";
   sont gardées dans le component FicheVisite.
 */
 export default function FicheVisite() {
+  //dictionnaire contenant les informations du formulaire au complet
+  const [info, setInfo] = useState({
+    // partie identité du formulaire
+    adresse: "",
+    courtier: "",
+    telephone: "",
+    cellulaire: "",
+    email: "",
+    //partie habitation du formulaire
+    prixDemande: "",
+    evalMunicipale: "",
+    taxeScholaire: "",
+    taxeMunicipale: "",
+    construction: "",
+    typeHabitation: "",
+    proprieteRevenu: "false",
+    revenuMensuel: "",
+  });
   //Tableau des pages du formulaire
   const pages = [
-    <IdentiteFormulaire />,
-    <AdresseFormulaire />,
-    <SpecificationsFormulaire />,
-    <ServicesFormulaire />,
-    <RangementFormulaire />,
+    <IdentiteFormulaire info={info} setInfo={setInfo} />,
+    <HabitationFormulaire info={info} setInfo={setInfo} />,
+    <AdresseFormulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurFormulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurFormulaire info={info} setInfo={setInfo} />,
+    <ServicesFormulaire info={info} setInfo={setInfo} />,
+    <RangementFormulaire info={info} setInfo={setInfo} />,
   ];
-  //dictionnaire contenant les informations du formulaire au complet
-  const [info, setInfo] = useState({});
+
   //le numéros dans le tableau 'pages' de la page  courante
   const [numPage, setNumPage] = useState(0);
 
-  //Il faudrait avoir une façon de se déplacer entre les différentes parties du formulaire. Peut-être un bouton
-  //'suivant' et 'précédent' ainsi qu'un "menu" indiquant la progression dans le formulaire et avec lequel l'utilisateur
-  //pourrait se déplacer aux différentes pages du formulaire.
   return (
     <div className="fichevisite-main">
       {/* Le logo du formulaire */}
