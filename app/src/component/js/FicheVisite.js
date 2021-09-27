@@ -1,9 +1,20 @@
 import React, { useState } from "react";
 import IdentiteFormulaire from "./IdentiteFormulaire";
-import AdresseFormulaire from "./AdresseFormulaire";
-import {Button} from "react-bootstrap";
-import Logo from "../../assets/images/fiche_de_visite.png";
+import HabitationFormulaire from "./HabitationFormulaire";
 
+import AdresseFormulaire from "./AdresseFormulaire";
+import RangementFormulaire from "./RangementFormulaire";
+import ServicesFormulaire from "./ServicesFormulaire";
+import SpecExterieurFormulaire from "./SpecExterieurFormulaire";
+import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
+import BarreProgression from "./BarreProgression";
+import { Button } from "react-bootstrap";
+import Logo from "../../assets/images/fiche_de_visite.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAngleDoubleRight,
+  faAngleDoubleLeft,
+} from "@fortawesome/free-solid-svg-icons";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -11,49 +22,74 @@ import Logo from "../../assets/images/fiche_de_visite.png";
   sont gardées dans le component FicheVisite.
 */
 export default function FicheVisite() {
-  //Tableau des pages du formulaire
-  const pages = [<IdentiteFormulaire />, <AdresseFormulaire />];
   //dictionnaire contenant les informations du formulaire au complet
-  const [info, setInfo] = useState({});
-  //le numéros dans le tableau 'pages' de la page courante
-  const [page, setPage] = useState(0);
+  const [info, setInfo] = useState({
+    // partie identité du formulaire
+    adresse: "",
+    courtier: "",
+    telephone: "",
+    cellulaire: "",
+    email: "",
+    //partie habitation du formulaire
+    prixDemande: "",
+    evalMunicipale: "",
+    taxeScholaire: "",
+    taxeMunicipale: "",
+    construction: "",
+    typeHabitation: "",
+    proprieteRevenu: "false",
+    revenuMensuel: "",
+  });
+  //Tableau des pages du formulaire
+  const pages = [
+    <IdentiteFormulaire info={info} setInfo={setInfo} />,
+    <HabitationFormulaire info={info} setInfo={setInfo} />,
+    <AdresseFormulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurFormulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurFormulaire info={info} setInfo={setInfo} />,
+    <ServicesFormulaire info={info} setInfo={setInfo} />,
+    <RangementFormulaire info={info} setInfo={setInfo} />,
+  ];
 
-  function changerPage(numPage) {
-    console.log(numPage);
-    setPage(numPage);
-  }
-  //Il faudrait avoir une façon de se déplacer entre les différentes parties du formulaire. Peut-être un bouton
-  //'suivant' et 'précédent' ainsi qu'un "menu" indiquant la progression dans le formulaire et avec lequel l'utilisateur
-  //pourrait se déplacer aux différentes pages du formulaire.
+  //le numéros dans le tableau 'pages' de la page  courante
+  const [numPage, setNumPage] = useState(0);
+
   return (
     <div className="fichevisite-main">
+      {/* Le logo du formulaire */}
       <div className="text-center">
-      <img
-          className="mb-4"
-          src={Logo}
-          alt="logo"
-          width="270"
-          height="150"
-      />{" "}
+        <img className="mb-4" src={Logo} alt="logo" width="270" height="150" />{" "}
       </div>
-      {pages[page]}
-      <div className="text-center">
 
-        {/* bouton pour passer à la page précédente */}
-        <Button variant="outline-danger"
-                className="btn btn-precedent"
-                onClick={() => changerPage(page - 1)}
+      {/* La section comprenant la page de progression et les outils de navigation du formulaire */}
+      <div className="container-progres">
+        {/* Le bouton de navigation vers la partie précédente du formulaire*/}
+        <button
+          className="btn-precedent"
+          onClick={() => setNumPage(numPage - 1)}
+          disabled={numPage <= 0}
         >
-          Précedent
-        </Button>
-        {/* bouton pour passer à la page suivante */}
-        <Button variant="outline-success"
-                className="btn btn-suivant"
-                onClick={() => changerPage(page + 1)}
+          <FontAwesomeIcon icon={faAngleDoubleLeft} size="3x"></FontAwesomeIcon>
+        </button>
+
+        {/* La barre de progression du formulaire */}
+        <BarreProgression numPage={numPage} />
+
+        {/* Le bouton de navigation vers la partie suivant du formulaire*/}
+        <button
+          className="btn-suivant"
+          onClick={() => setNumPage(numPage + 1)}
+          disabled={numPage >= pages.length - 1}
         >
-          Suivant
-        </Button>
+          <FontAwesomeIcon
+            icon={faAngleDoubleRight}
+            size="3x"
+          ></FontAwesomeIcon>
+        </button>
       </div>
+
+      {/* La page active du formulaire */}
+      {pages[numPage]}
     </div>
   );
 }
