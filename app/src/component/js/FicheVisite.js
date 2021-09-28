@@ -39,6 +39,12 @@ export default function FicheVisite() {
     typeHabitation: "",
     proprieteRevenu: "false",
     revenuMensuel: "",
+    //partie adresse du formulaire
+    bruitAmbiant: "",
+    egout: "",
+    eau: "",
+    circulation: "",
+    quartier: "",
   });
   //Tableau des pages du formulaire
   const pages = [
