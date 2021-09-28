@@ -4,6 +4,7 @@
 
 - Raphaël Jacob-Simard - JACR26038907
 - Yan-Alexandre Leclerc - LECY20069604
+- Zachary Péloquin - PELZ07039904
 
 ## Consignes d'installation
 
