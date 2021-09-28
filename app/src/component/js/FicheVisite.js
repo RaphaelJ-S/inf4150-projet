@@ -40,6 +40,10 @@ export default function FicheVisite() {
     proprieteRevenu: "false",
     revenuMensuel: "",
     //partie adresse du formulaire
+    numeroCivic: "",
+    nomRue: "",
+    numeroAppartement: "",
+    codePostale: "",
     bruitAmbiant: "",
     egout: "",
     eau: "",

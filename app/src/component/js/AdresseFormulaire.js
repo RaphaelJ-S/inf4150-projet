@@ -14,6 +14,54 @@ export default function AdresseFormulaire({ info, setInfo}) {
     <section className="text-center">
       <main className="form-signin">
         <Form>
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              id="numeroCivic"
+              name="numeroCivic"
+              autoFocus
+              onChange={handleChange}
+            />
+            <label htmlFor="numeroCivic">Numéro Civic</label>
+          </div>
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              id="rue"
+              name="nomRue"
+              autoFocus
+              onChange={handleChange}
+            />
+            <label htmlFor="rue">Nom de rue</label>
+          </div>
+          {/** TODO */}
+          <div className="form-floating">
+            <input list="numeroAppartement" 
+              className="form-control"
+              id="numeroAppartement"
+              name="numeroAppartement" 
+              autoFocus
+              onChange={handleChange}
+            />
+            <datalist id="numeroAppartement">
+              <option value="Non applicable"></option>
+              <option value="Numero"></option>
+            </datalist>
+            <label htmlFor="numeroAppartement">Numero d'appartement</label>
+          </div>
+          <div className="form-floating">
+            <input
+              type="text"
+              className="form-control"
+              id="codePostal"
+              name="codePostal"
+              autoFocus
+              onChange={handleChange}
+            />
+            <label htmlFor="rue">Code postal</label>
+          </div>
         <div className="form-floating">
             <select
               className="form-select"
@@ -49,7 +97,7 @@ export default function AdresseFormulaire({ info, setInfo}) {
               id="eau"
               onChange={handleChange}
             >
-              <option value="municipale">Municipalé</option>
+              <option value="municipale">Municipalité</option>
               <option value="puit">Puit</option>
             </select>
             <label htmlFor="eau">Eau</label>
