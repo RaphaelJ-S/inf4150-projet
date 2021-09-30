@@ -49,6 +49,20 @@ export default function FicheVisite() {
     eau: "",
     circulation: "",
     quartier: "",
+    //partie extérieur
+    fondation: "",
+    revetExterieur: "",
+    fenVitrage: "",
+    fenConstruction: "",
+    toiture: "",
+    etatToiture: "",
+    tailleTerrain: "",
+    amenagementTerrain: "",
+    piscine: "",
+    chaufePiscine: "",
+    stationnement: "",
+    entree: "",
+    orientationEnsoleil: ""
   });
   //Tableau des pages du formulaire
   const pages = [
