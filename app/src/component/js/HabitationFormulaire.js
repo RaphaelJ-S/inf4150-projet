@@ -98,7 +98,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
           <div className="proRev">
-            <Form.Label>Propriété à revenu</Form.Label>
+            <div className="label-revenu">
+              <span className="label-revenu-texte">Propriété à revenu</span>
+            </div>
             <div className="input-group mb-3">
               <button
                 className="btn btn-outline-success"
@@ -131,7 +133,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
                 onChange={handleChange}
               />
               <label htmlFor="revenu" className="input-group-text">
-                $
+                $/m
               </label>
             </div>
           </div>

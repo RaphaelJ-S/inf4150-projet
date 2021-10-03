@@ -53,6 +53,7 @@ button[disabled] {
 /*
 Fin de barre de progression
 */
+
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -82,4 +83,14 @@ Fin de barre de progression
 
 .error {
   border: 1px solid red !important;
+}
+
+.label-revenu {
+  display: flex;
+  justify-content: left;
+}
+
+.label-revenu-texte   {
+  margin: 0px;
+  margin-left: 1rem;
 }
