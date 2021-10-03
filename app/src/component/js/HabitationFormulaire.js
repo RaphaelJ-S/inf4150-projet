@@ -99,7 +99,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
           </div>
           <div className="proRev">
             <div className="label-revenu">
-              <span className="label-revenu-texte">Propriété à revenu</span>
+              <span className="label-revenu-texte">Propriété à revenu?</span>
             </div>
             <div className="input-group mb-3">
               <button

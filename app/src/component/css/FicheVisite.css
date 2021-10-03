@@ -88,9 +88,21 @@ Fin de barre de progression
 .label-revenu {
   display: flex;
   justify-content: left;
+  border-top: #dddbdb solid 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-left: #dddbdb solid 1px;
+  border-right: #dddbdb solid 1px;
+  background-color: white;
+  padding-left: 0.9rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+
+  font-size: smaller;
+  color: #888787;
 }
 
 .label-revenu-texte   {
-  margin: 0px;
-  margin-left: 1rem;
+  margin-bottom: 0px;
+  padding-left: 1rem;
 }
