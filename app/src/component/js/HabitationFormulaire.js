@@ -29,6 +29,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               className="form-control"
               id="prixDem"
               name="prixDemande"
+              value={info.prixDemande}
               autoFocus
               onChange={handleChange}
             />
@@ -40,6 +41,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               className="form-control"
               id="eval"
               name="evalMunicipale"
+              value={info.evalMunicipale}
               onChange={handleChange}
             />
             <label htmlFor="eval">Évaluation municipale</label>
@@ -50,6 +52,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               className="form-control"
               id="taxeSchol"
               name="taxeScholaire"
+              value={info.taxeSchol}
               onChange={handleChange}
             />
             <label htmlFor="taxeSchol">Montant de la taxe scolaire</label>
@@ -60,35 +63,43 @@ export default function HabitationFormulaire({ info, setInfo }) {
               className="form-control"
               id="taxeMuni"
               name="taxeMunicipale"
+              value={info.taxeMunicipale}
               onChange={handleChange}
             />
             <label htmlFor="taxeMuni">Montant de la taxe municipale</label>
           </div>
+
+          <br />
           <div className="form-floating">
             <select
               className="form-select"
               aria-label="Selection de la construction"
               name="construction"
               id="construct"
+              value={info.construction}
               onChange={handleChange}
             >
+              <option selected>Sélectionez l'état de la construction</option>
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
             </select>
             <label htmlFor="construct">Construction</label>
           </div>
+
           <div className="form-floating">
             <select
               className="form-select"
               aria-label="Selection du type d'habitation"
               name="typeHabitation"
               id="typeHabitation"
+              value={info.typeHabitation}
               onChange={handleChange}
             >
+              <option selected>Choisissez un type d'habitation</option>
               <option value="maisonIndividuelle">Maison individuelle</option>
               <option value="duplex">Duplex</option>
               <option value="tourHabitation">Tour d'habitation</option>
-              <option value="maisonJemelee">Maison jumelée</option>
+              <option value="maisonJumelee">Maison jumelée</option>
               <option value="triplex">Triplex</option>
               <option value="bungalow">Plain-pied(bungalow)</option>
               <option value="maisonRangee">Maison en rangée</option>
@@ -97,11 +108,32 @@ export default function HabitationFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du quartier"
+              name="quartier"
+              id="quartier"
+              value={info.quartier}
+              onChange={handleChange}
+            >
+              <option selected>Sélectionnez le zonage du quartier</option>
+              <option value="residentiel">Résidentiel</option>
+              <option value="commerce-industriel">
+                Commercial ou industriel
+              </option>
+              <option value="rural">Rural</option>
+            </select>
+            <label htmlFor="quartier">Quartier</label>
+          </div>
+          <br />
           <div className="proRev">
-            <div className="label-revenu">
-              <span className="label-revenu-texte">Propriété à revenu?</span>
+            <div className="label-texte">
+              <label htmlfor="revenu" className="label noselect">
+                Propriété à revenu?
+              </label>
             </div>
-            <div className="input-group mb-3">
+            <div className="input-group">
               <button
                 className="btn btn-outline-success"
                 style={btnStyle}
@@ -132,7 +164,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
                 disabled={info.proprieteRevenu === "false"}
                 onChange={handleChange}
               />
-              <label htmlFor="revenu" className="input-group-text">
+              <label htmlFor="revenu" className="input-group-text noselect">
                 $/m
               </label>
             </div>

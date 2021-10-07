@@ -1,20 +1,18 @@
+//imports externes
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+//imports locaux
 import IdentiteFormulaire from "./IdentiteFormulaire";
 import HabitationFormulaire from "./HabitationFormulaire";
-
 import AdresseFormulaire from "./AdresseFormulaire";
 import RangementFormulaire from "./RangementFormulaire";
 import ServicesFormulaire from "./ServicesFormulaire";
 import SpecExterieurFormulaire from "./SpecExterieurFormulaire";
 import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
 import BarreProgression from "./BarreProgression";
-import { Button } from "react-bootstrap";
 import Logo from "../../assets/images/fiche_de_visite.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleRight,
-  faAngleDoubleLeft,
-} from "@fortawesome/free-solid-svg-icons";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -39,30 +37,42 @@ export default function FicheVisite() {
     typeHabitation: "",
     proprieteRevenu: "false",
     revenuMensuel: "",
+    quartier: "",
     //partie adresse du formulaire
     numeroCivic: "",
     nomRue: "",
     numeroAppartement: "",
     codePostale: "",
+    ageImmeuble: 0,
     bruitAmbiant: "",
     egout: "",
     eau: "",
     circulation: "",
-    quartier: "",
     //partie extérieur
     fondation: "",
     revetExterieur: "",
+    autreRevet: "",
     fenVitrage: "",
     fenConstruction: "",
     toiture: "",
     etatToiture: "",
     tailleTerrain: "",
-    amenagementTerrain: "",
+    descriptTaille: "",
+    //les aménagements extérieurs
+    pelouse: false,
+    boise: false,
+    terrasseCouverte: false,
+    terrasseNonCouverte: false,
+    gazebo: false,
+    cabanon: false,
+    cloture: false,
+    haie: false,
+
     piscine: "",
     chaufePiscine: "",
     stationnement: "",
     entree: "",
-    orientationEnsoleil: ""
+    orientationEnsoleil: "",
   });
   //Tableau des pages du formulaire
   const pages = [
@@ -93,11 +103,11 @@ export default function FicheVisite() {
           onClick={() => setNumPage(numPage - 1)}
           disabled={numPage <= 0}
         >
-          <FontAwesomeIcon icon={faAngleDoubleLeft} size="3x"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faArrowLeft} size="3x"></FontAwesomeIcon>
         </button>
 
         {/* La barre de progression du formulaire */}
-        <BarreProgression numPage={numPage} />
+        <BarreProgression numPage={numPage} setNumPage={setNumPage} />
 
         {/* Le bouton de navigation vers la partie suivant du formulaire*/}
         <button
@@ -105,10 +115,7 @@ export default function FicheVisite() {
           onClick={() => setNumPage(numPage + 1)}
           disabled={numPage >= pages.length - 1}
         >
-          <FontAwesomeIcon
-            icon={faAngleDoubleRight}
-            size="3x"
-          ></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faArrowRight} size="3x"></FontAwesomeIcon>
         </button>
       </div>
 
