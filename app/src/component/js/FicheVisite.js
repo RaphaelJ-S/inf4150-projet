@@ -60,7 +60,8 @@ export default function FicheVisite() {
     amenagementTerrain: "",
     piscine: "",
     chaufePiscine: "",
-    stationnement: "",
+    stationnementCouverture: "",
+    placeStationnement:"",
     entree: "",
     orientationEnsoleil: ""
   });
@@ -79,6 +80,7 @@ export default function FicheVisite() {
   const [numPage, setNumPage] = useState(0);
 
   return (
+    <div className="std-page-container">
     <div className="fichevisite-main">
       {/* Le logo du formulaire */}
       <div className="text-center">
@@ -114,6 +116,10 @@ export default function FicheVisite() {
 
       {/* La page active du formulaire */}
       {pages[numPage]}
+    </div>
+    <div className="footer">
+      le footer
+    </div>
     </div>
   );
 }

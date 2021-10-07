@@ -97,7 +97,7 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
             <label htmlFor="etatToiture">État de la toiture</label>
           </div>
           {/** TODO trouver une maniere elegante d'incorporer 
-          * un champ de text dans des form de selections */}
+          * un  de text dans des form de selections */}
           <div className="form-floating">
             <input list="numeroAppartement" 
               className="form-control"
@@ -164,7 +164,64 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
             </select>
             <label htmlFor="amenagementTerrain">État de la toiture</label>
           </div>
-          
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du type de couverture du stationnement"
+              name="stationnementCouverture"
+              id="stationnementCouverture"
+              onChange={handleChange}
+            >
+              <option value="couvert">Couvert</option>
+              <option value="nonCouvert">Non couvert</option>
+              <option value="garage">Garage</option>
+            </select>
+            <label htmlFor="stationnementCouverture">Couverture du stationnement: </label>
+          </div>
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du nombre de place de stationnement"
+              name="placeStationnement"
+              id="placeStationnement"
+              onChange={handleChange}
+            >
+              <option value="1voiture">1 voiture</option>
+              <option value="2voiture">2 voitures</option>
+              <option value="aucun">Aucun</option>
+            </select>
+            <label htmlFor="placeStationnement">Couverture du stationnement: </label>
+          </div>
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du matériel de l'entree"
+              name="entree"
+              id="entree"
+              onChange={handleChange}
+            >
+              <option value="asphalte">Asphalte</option>
+              <option value="paveebeton">Pavé de béton</option>
+              <option value="gravier">Gravier</option>
+              <option value="terre">Terre</option>
+            </select>
+            <label htmlFor="entree">Type d'entrée: </label>
+          </div>
+
+          {/* Trouvé une bonne manière de représenté l'ensoleillement <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du nombre de place de stationnement"
+              name="placeStationnement"
+              id="placeStationnement"
+              onChange={handleChange}
+            >
+              <option value="1voiture">1 voiture</option>
+              <option value="2voiture">2 voitures</option>
+              <option value="aucun">Aucun</option>
+            </select>
+            <label htmlFor="placeStationnement">Couverture du stationnement: </label>
+          </div> */}
         </Form>
       </main>
     </section>
