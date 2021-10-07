@@ -333,29 +333,6 @@ export default function SpecExterieurFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="amenagementTerrain">Piscine: </label>
           </div>
-          <div className="form-floating">
-            <select
-              className="form-select"
-              aria-label="Selection de l'etat de la toiture"
-              name="amenagementTerrain"
-              id="amenagementTerrain"
-              onChange={handleChange}
-            >
-              <option value="pelouse">Pelouse</option>
-              <option value="terrasse non couverte">
-                Terrasse (patio) non couverte
-              </option>
-              <option value="cloture">Clôture</option>
-              <option value="boise">Boisé</option>
-              <option value="gazebo">Gloriette (Gazebo)</option>
-              <option value="haie">Haie</option>
-              <option value="terrasse couverte">
-                Terrasse (patio) couverte
-              </option>
-              <option value="cabanon">Cabanon</option>
-            </select>
-            <label htmlFor="amenagementTerrain">État de la toiture</label>
-          </div>
         </Form>
       </main>
     </section>
