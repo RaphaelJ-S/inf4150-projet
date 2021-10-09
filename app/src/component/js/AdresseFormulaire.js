@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
@@ -14,6 +14,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
     <section className="text-center">
       <main className="form-signin">
         <Form>
+          {/* début numéro civic */}
           <div className="form-floating">
             <input
               type="text"
@@ -26,6 +27,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
             />
             <label htmlFor="numeroCivic">Numéro Civic</label>
           </div>
+          {/* fin numéro civic */}
+
+          {/* début nom de rue */}
           <div className="form-floating">
             <input
               type="text"
@@ -37,6 +41,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
             />
             <label htmlFor="rue">Nom de rue</label>
           </div>
+          {/* fin nom de rue */}
+
+          {/* début numéro appartement */}
           {/** TODO */}
           <div className="form-floating">
             <input
@@ -54,6 +61,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
             </datalist>
             <label htmlFor="numeroAppartement">Numero d'appartement</label>
           </div>
+          {/* fin numéro appartement */}
+
+          {/* début code postal */}
           <div className="form-floating">
             <input
               type="text"
@@ -65,9 +75,12 @@ export default function AdresseFormulaire({ info, setInfo }) {
             />
             <label htmlFor="rue">Code postal</label>
           </div>
+          {/* fin code postal */}
+
+          {/* début âge immeuble */}
           <div className="proRev">
             <div className="label-texte">
-              <label htmlfor="ageImmeuble" className="label noselect">
+              <label htmlFor="ageImmeuble" className="label noselect">
                 Âge de l'immeuble
               </label>
             </div>
@@ -89,8 +102,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          {/* fin âge immeuble */}
           <br />
-
+          {/* début bruit ambiant */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -100,13 +114,18 @@ export default function AdresseFormulaire({ info, setInfo }) {
               value={info.bruitAmbiant}
               onChange={handleChange}
             >
-              <option selected>Sélectionnez le niveau de bruit ambiant</option>
+              <option defaultValue="" selected>
+                Sélectionnez le niveau de bruit ambiant
+              </option>
               <option value="aucun">Aucun</option>
               <option value="acceptable">Acceptable</option>
               <option value="irritant">Irritant</option>
             </select>
             <label htmlFor="bruitAmbiant">Bruit ambiant</label>
           </div>
+          {/* fin bruit ambiant */}
+
+          {/* début égout */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -116,7 +135,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               id="egout"
               onChange={handleChange}
             >
-              <option selected>
+              <option defaultValue="" selected>
                 Sélectionnez le type d'installation sanitaire
               </option>
               <option value="municipale">Municipale</option>
@@ -124,6 +143,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="egout">Égout</label>
           </div>
+          {/* fin égout */}
+
+          {/* début installations eau */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -133,7 +155,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               value={info.eau}
               onChange={handleChange}
             >
-              <option selected>
+              <option defaultValue="" selected>
                 Sélectionnez le type d'approvisionnement d'eau
               </option>
               <option value="municipale">Municipalité</option>
@@ -141,6 +163,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="eau">Eau</label>
           </div>
+          {/* fin installations eau */}
+
+          {/* début circulation */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -150,13 +175,16 @@ export default function AdresseFormulaire({ info, setInfo }) {
               id="circulation"
               onChange={handleChange}
             >
-              <option selected>Sélectionnez le niveau de ciculation</option>
+              <option defaultValue="" selected>
+                Sélectionnez le niveau de ciculation
+              </option>
               <option value="voiePrincipale">Voie principale</option>
               <option value="rueTranquille">Rue tranquille</option>
               <option value="cds">Cul-de-sac</option>
             </select>
             <label htmlFor="circulation">Circulation</label>
           </div>
+          {/* fin circulation */}
         </Form>
       </main>
     </section>

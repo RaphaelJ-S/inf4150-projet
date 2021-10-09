@@ -14,6 +14,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
       <section className="text-center">
         <main className="form-signin">
           <Form>
+            {/* début adresse */}
             <div className="form-floating">
               <input
                 type="text"
@@ -26,6 +27,9 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               />
               <label htmlFor="floatingAdresse">Adresse</label>
             </div>
+            {/* fin adresse */}
+
+            {/* début courtier */}
             <div className="form-floating">
               <input
                 type="text"
@@ -37,6 +41,9 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               />
               <label htmlFor="floatingCourtier">Courtier/Vendeur</label>
             </div>
+            {/* fin courtier */}
+
+            {/* début téléphone */}
             <div className="form-floating">
               <input
                 type="text"
@@ -48,6 +55,9 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               />
               <label htmlFor="floatingPhone">Téléphone</label>
             </div>
+            {/* fin téléphone */}
+
+            {/* début cellulaire */}
             <div className="form-floating">
               <input
                 type="text"
@@ -59,6 +69,9 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               />
               <label htmlFor="floatingCell">Cellulaire</label>
             </div>
+            {/* fin cellulaire */}
+
+            {/* début email */}
             <div className="form-floating">
               <input
                 type="email"
@@ -70,6 +83,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               />
               <label htmlFor="floatingEmail">Courriel</label>
             </div>
+            {/* fin email */}
           </Form>
         </main>
       </section>

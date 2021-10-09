@@ -9,7 +9,8 @@ import HabitationFormulaire from "./HabitationFormulaire";
 import AdresseFormulaire from "./AdresseFormulaire";
 import RangementFormulaire from "./RangementFormulaire";
 import ServicesFormulaire from "./ServicesFormulaire";
-import SpecExterieurFormulaire from "./SpecExterieurFormulaire";
+import SpecExterieurPartie1Formulaire from "./SpecExterieurPartie1Formulaire";
+import SpecExterieurPartie2Formulaire from "./SpecExterieurPartie2Formulaire";
 import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
@@ -31,7 +32,7 @@ export default function FicheVisite() {
     //partie habitation du formulaire
     prixDemande: "",
     evalMunicipale: "",
-    taxeScholaire: "",
+    taxeScolaire: "",
     taxeMunicipale: "",
     construction: "",
     typeHabitation: "",
@@ -67,9 +68,9 @@ export default function FicheVisite() {
     cabanon: false,
     cloture: false,
     haie: false,
-
+    //fin aménagements extérieurs
     piscine: "",
-    chaufePiscine: "",
+    chauffePiscine: "",
     stationnement: "",
     entree: "",
     orientationEnsoleil: "",
@@ -79,7 +80,8 @@ export default function FicheVisite() {
     <IdentiteFormulaire info={info} setInfo={setInfo} />,
     <HabitationFormulaire info={info} setInfo={setInfo} />,
     <AdresseFormulaire info={info} setInfo={setInfo} />,
-    <SpecExterieurFormulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurPartie1Formulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurPartie2Formulaire info={info} setInfo={setInfo} />,
     <SpecInterieurFormulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <RangementFormulaire info={info} setInfo={setInfo} />,

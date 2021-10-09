@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
@@ -23,6 +23,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
     <section className="text-center">
       <main className="form-signin">
         <Form>
+          {/* début prix demandé */}
           <div className="form-floating">
             <input
               type="text"
@@ -35,6 +36,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
             />
             <label htmlFor="prixDem">Prix Demandé</label>
           </div>
+          {/* fin prix demandé */}
+
+          {/* début évaluation municipale */}
           <div className="form-floating">
             <input
               type="text"
@@ -46,17 +50,23 @@ export default function HabitationFormulaire({ info, setInfo }) {
             />
             <label htmlFor="eval">Évaluation municipale</label>
           </div>
+          {/* fin évaluation municipale */}
+
+          {/* début taxe scolaire */}
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
-              id="taxeSchol"
-              name="taxeScholaire"
+              id="taxeScol"
+              name="taxeScolaire"
               value={info.taxeSchol}
               onChange={handleChange}
             />
-            <label htmlFor="taxeSchol">Montant de la taxe scolaire</label>
+            <label htmlFor="taxeScol">Montant de la taxe scolaire</label>
           </div>
+          {/* fin taxe scolaire */}
+
+          {/* début taxe municipale */}
           <div className="form-floating">
             <input
               type="text"
@@ -68,8 +78,10 @@ export default function HabitationFormulaire({ info, setInfo }) {
             />
             <label htmlFor="taxeMuni">Montant de la taxe municipale</label>
           </div>
+          {/* fin taxe municipale */}
 
           <br />
+          {/* début état construction */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -79,13 +91,17 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.construction}
               onChange={handleChange}
             >
-              <option selected>Sélectionez l'état de la construction</option>
+              <option defaultValue="" selected>
+                Sélectionez l'état de la construction
+              </option>
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
             </select>
             <label htmlFor="construct">Construction</label>
           </div>
+          {/* fin état construction */}
 
+          {/* début type habitation */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -95,7 +111,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.typeHabitation}
               onChange={handleChange}
             >
-              <option selected>Choisissez un type d'habitation</option>
+              <option defaultValue="" selected>
+                Choisissez un type d'habitation
+              </option>
               <option value="maisonIndividuelle">Maison individuelle</option>
               <option value="duplex">Duplex</option>
               <option value="tourHabitation">Tour d'habitation</option>
@@ -108,6 +126,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
+          {/* fin type habitation */}
+
+          {/* début zonage quartier */}
           <div className="form-floating">
             <select
               className="form-select"
@@ -117,7 +138,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.quartier}
               onChange={handleChange}
             >
-              <option selected>Sélectionnez le zonage du quartier</option>
+              <option defaultValue="" selected>
+                Sélectionnez le zonage du quartier
+              </option>
               <option value="residentiel">Résidentiel</option>
               <option value="commerce-industriel">
                 Commercial ou industriel
@@ -126,10 +149,13 @@ export default function HabitationFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="quartier">Quartier</label>
           </div>
+          {/* fin zonage quartier */}
+
           <br />
+          {/* début propriété revenu */}
           <div className="proRev">
             <div className="label-texte">
-              <label htmlfor="revenu" className="label noselect">
+              <label htmlFor="revenu" className="label noselect">
                 Propriété à revenu?
               </label>
             </div>
@@ -169,6 +195,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          {/* fin propriété revenu */}
         </Form>
       </main>
     </section>
