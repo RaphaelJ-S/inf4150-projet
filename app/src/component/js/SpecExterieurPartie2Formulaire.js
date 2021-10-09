@@ -35,7 +35,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               aria-label="Selection de la description de la taille du terrain"
               onChange={handleChange}
             >
-              <option selected defaultValue="">
+              <option defaultValue="">
                 Sélectionnez la taille relative du terrain
               </option>
               <option value="petit">Petit</option>
@@ -185,11 +185,10 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               aria-label="Selection de la piscine"
               name="piscine"
               id="piscine"
+              value={info.piscine}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
-                Sélectionnez le type de piscine
-              </option>
+              <option defaultValue="">Sélectionnez le type de piscine</option>
               <option value="aucune">Aucune</option>
               <option value="creuse">Creusée</option>
               <option value="semi-creuse">Semi-creusée</option>
@@ -206,10 +205,11 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               aria-label="Selection du chauffe-piscine"
               name="chauffePiscine"
               id="chauffePiscine"
+              value={info.chauffePiscine}
               disabled={info.piscine === "aucune" || info.piscine === ""}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le type de chauffe-piscine
               </option>
               <option value="aucun">Aucun</option>
@@ -219,6 +219,75 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
             <label htmlFor="amenagementTerrain">Chauffe-piscine </label>
           </div>
           {/* fin type chauffe-piscine */}
+          <p className="mb-3"></p>
+          {/* début type stationnement */}
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du type de stationnement"
+              name="typeStationnement"
+              id="typeStationnement"
+              value={info.typeStationnement}
+              onChange={handleChange}
+            >
+              <option defaultValue="">
+                Sélectionnez le type de stationnement
+              </option>
+              <option value="aucun">Aucun</option>
+              <option value="couvert">Couvert</option>
+              <option value="nonCouvert">Non-couvert</option>
+              <option value="garage">Garage</option>
+            </select>
+            <label htmlFor="typeStationnement">Type de stationnement </label>
+          </div>
+          {/* fin type stationnement */}
+
+          {/* début nombre stationnement */}
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du nombre de place de stationnement"
+              name="nombreStationnement"
+              id="nombreStationnement"
+              value={info.nombreStationnement}
+              disabled={
+                info.typeStationnement === "aucun" ||
+                info.typeStationnement === ""
+              }
+              onChange={handleChange}
+            >
+              <option defaultValue="">
+                Sélectionnez le nombre de place de stationnement
+              </option>
+              <option value="1">1 voiture</option>
+              <option value="2">2 voitures</option>
+            </select>
+            <label htmlFor="nombreStationnement">
+              Nombre de place de stationnement{" "}
+            </label>
+          </div>
+          {/* fin nombre stationnement */}
+          <p className="mb-3"></p>
+
+          {/* début entrée */}
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du type d'entree"
+              name="entree"
+              id="entree"
+              value={info.entree}
+              onChange={handleChange}
+            >
+              <option defaultValue="">Sélectionnez le type d'entrée</option>
+              <option value="asphalte">Asphalte</option>
+              <option value="paveBeton">Pavé de béton</option>
+              <option value="gravier">Gravier</option>
+              <option value="terre">Terre</option>
+            </select>
+            <label htmlFor="entree">Type d'entrée </label>
+          </div>
+          {/* fin entrée */}
         </Form>
       </main>
     </section>

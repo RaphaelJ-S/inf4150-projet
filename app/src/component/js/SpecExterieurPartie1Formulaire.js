@@ -26,7 +26,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
               autoFocus
               onChange={handleChange}
             >
-              <option selected defaultValue="">
+              <option defaultValue="">
                 Sélectionnez le matériel des fondations
               </option>
               <option value="Beton">Béton</option>
@@ -52,7 +52,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
               aria-label="Selection du matériel du revêtement extérieur"
               onChange={handleChange}
             >
-              <option selected defaultValue="">
+              <option defaultValue="">
                 Sélectionnez le matériel du revêtement extérieur
               </option>
               <option value="bois">Bois</option>
@@ -89,9 +89,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
               id="fenVitrage"
               onChange={handleChange}
             >
-              <option selected defaultValue="">
-                Sélectionnez le type de vitrage
-              </option>
+              <option defaultValue="">Sélectionnez le type de vitrage</option>
               <option value="simple">Simple</option>
               <option value="double">Double</option>
               <option value="triple">Triple</option>
@@ -111,7 +109,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
               value={info.fenConstruction}
               onChange={handleChange}
             >
-              <option selected defaultValue="">
+              <option defaultValue="">
                 Sélectionnez le matériel de la fenêtre
               </option>
               <option value="bois">Bois</option>
@@ -133,7 +131,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
               id="etatToiture"
               onChange={handleChange}
             >
-              <option selected defaultValue="">
+              <option defaultValue="">
                 Sélectionnez l'état général de la toiture
               </option>
               <option value="bon">Bon</option>
@@ -159,7 +157,7 @@ export default function SpecExterieurPartie1Formulaire({ info, setInfo }) {
                 id="toiture"
                 name="toiture"
                 value={info.toiture}
-                placeholder="Entrez l'âge de la toiture en années"
+                placeholder="Entrez l'âge dce la toiture en années"
                 onChange={handleChange}
               />
               <label htmlFor="toiture" className="input-group-text noselect">

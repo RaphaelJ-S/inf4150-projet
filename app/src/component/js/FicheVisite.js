@@ -11,7 +11,8 @@ import RangementFormulaire from "./RangementFormulaire";
 import ServicesFormulaire from "./ServicesFormulaire";
 import SpecExterieurPartie1Formulaire from "./SpecExterieurPartie1Formulaire";
 import SpecExterieurPartie2Formulaire from "./SpecExterieurPartie2Formulaire";
-import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
+import EnsoleillementFormulaire from "./EnsoleillementFormulaire";
+import SpecInterieurPartie1Formulaire from "./SpecInterieurPartie1Formulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
 
@@ -59,7 +60,7 @@ export default function FicheVisite() {
     etatToiture: "",
     tailleTerrain: "",
     descriptTaille: "",
-    //les aménagements extérieurs
+    // subliste : les aménagements extérieurs
     pelouse: false,
     boise: false,
     terrasseCouverte: false,
@@ -68,12 +69,22 @@ export default function FicheVisite() {
     cabanon: false,
     cloture: false,
     haie: false,
-    //fin aménagements extérieurs
+    //fin subliste : aménagements extérieurs
     piscine: "",
     chauffePiscine: "",
-    stationnement: "",
+    typeStationnement: "",
+    nombreStationnement: "",
     entree: "",
-    orientationEnsoleil: "",
+    //subliste : ensoleillement
+    interieurAMsoleil: "",
+    interieurPMsoleil: "",
+    exterieurDevantSoleilAM: false,
+    exterieurDevantSoleilPM: false,
+
+    exterieurArriereSoleilAM: false,
+    exterieurArriereSoleilPM: false,
+
+    //fin subliste : ensoleillement
   });
   //Tableau des pages du formulaire
   const pages = [
@@ -82,7 +93,8 @@ export default function FicheVisite() {
     <AdresseFormulaire info={info} setInfo={setInfo} />,
     <SpecExterieurPartie1Formulaire info={info} setInfo={setInfo} />,
     <SpecExterieurPartie2Formulaire info={info} setInfo={setInfo} />,
-    <SpecInterieurFormulaire info={info} setInfo={setInfo} />,
+    <EnsoleillementFormulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie1Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <RangementFormulaire info={info} setInfo={setInfo} />,
   ];

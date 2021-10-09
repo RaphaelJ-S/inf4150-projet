@@ -91,8 +91,8 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.construction}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
-                Sélectionez l'état de la construction
+              <option defaultValue="">
+                Sélectionnez l'état de la construction
               </option>
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
@@ -111,9 +111,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.typeHabitation}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
-                Choisissez un type d'habitation
-              </option>
+              <option defaultValue="">Sélectionnez un type d'habitation</option>
               <option value="maisonIndividuelle">Maison individuelle</option>
               <option value="duplex">Duplex</option>
               <option value="tourHabitation">Tour d'habitation</option>
@@ -138,7 +136,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               value={info.quartier}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le zonage du quartier
               </option>
               <option value="residentiel">Résidentiel</option>

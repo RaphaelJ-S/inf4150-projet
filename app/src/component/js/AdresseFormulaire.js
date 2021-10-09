@@ -114,7 +114,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               value={info.bruitAmbiant}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le niveau de bruit ambiant
               </option>
               <option value="aucun">Aucun</option>
@@ -135,7 +135,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               id="egout"
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le type d'installation sanitaire
               </option>
               <option value="municipale">Municipale</option>
@@ -155,7 +155,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               value={info.eau}
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le type d'approvisionnement d'eau
               </option>
               <option value="municipale">Municipalité</option>
@@ -175,7 +175,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               id="circulation"
               onChange={handleChange}
             >
-              <option defaultValue="" selected>
+              <option defaultValue="">
                 Sélectionnez le niveau de ciculation
               </option>
               <option value="voiePrincipale">Voie principale</option>
