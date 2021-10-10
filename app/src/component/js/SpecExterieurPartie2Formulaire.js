@@ -230,9 +230,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               value={info.typeStationnement}
               onChange={handleChange}
             >
-              <option defaultValue="">
-                Sélectionnez le type de stationnement
-              </option>
+              <option value="">Sélectionnez le type de stationnement</option>
               <option value="aucun">Aucun</option>
               <option value="couvert">Couvert</option>
               <option value="nonCouvert">Non-couvert</option>

@@ -20,48 +20,35 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
       <main className="form-signin">
         <Form>
           {/** début ensoleillement intérieur AM */}
-          <div className="proRev">
-            <div className="label-texte">
-              <label htmlFor="interieurAMsoleil" className="label noselect">
-                Pièces ensolleillées en avant-midi
-              </label>
-            </div>
 
-            <div className="input-group">
-              <input
-                type="texte"
-                className="form-control"
-                id="interieurAMsoleil"
-                name="interieurAMsoleil"
-                value={info.interieurAMsoleil}
-                placeholder="Entrez les pièces ensoleillées en avant-midi"
-                onChange={handleChange}
-              />
-            </div>
+          <div className="form-floating">
+            <input
+              type="texte"
+              className="form-control"
+              id="interieurAMsoleil"
+              name="interieurAMsoleil"
+              value={info.interieurAMsoleil}
+              onChange={handleChange}
+              autofocus
+            />
+            <label htmlFor="interieurAMsoleil">Pièce ensoleillées : AM</label>
           </div>
 
           {/** fin ensoleillement intérieur AM */}
 
           {/**  */}
           {/** début ensoleillement intérieur PM */}
-          <div className="proRev">
-            <div className="label-texte">
-              <label htmlFor="interieurPMsoleil" className="label noselect">
-                Pièces ensolleillées en après-midi
-              </label>
-            </div>
 
-            <div className="input-group">
-              <input
-                type="texte"
-                className="form-control"
-                id="interieurPMsoleil"
-                name="interieurPMsoleil"
-                value={info.interieurPMsoleil}
-                placeholder="Entrez les pièces ensoleillées en après-midi"
-                onChange={handleChange}
-              />
-            </div>
+          <div className="form-floating">
+            <input
+              type="texte"
+              className="form-control"
+              id="interieurPMsoleil"
+              name="interieurPMsoleil"
+              value={info.interieurPMsoleil}
+              onChange={handleChange}
+            />
+            <label htmlFor="interieurPMsoleil">Pièce ensoleillées : PM</label>
           </div>
           {/** fin ensoleillement intérieur PM */}
 

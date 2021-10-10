@@ -5,7 +5,7 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 
 export default function BarreProgression({ numPage, setNumPage }) {
-  const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const steps = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   return (
     <>
       <Stepper activeStep={numPage} orientation="horizontal" connector="">

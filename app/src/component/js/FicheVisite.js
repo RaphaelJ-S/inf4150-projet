@@ -13,6 +13,7 @@ import SpecExterieurPartie1Formulaire from "./SpecExterieurPartie1Formulaire";
 import SpecExterieurPartie2Formulaire from "./SpecExterieurPartie2Formulaire";
 import EnsoleillementFormulaire from "./EnsoleillementFormulaire";
 import SpecInterieurPartie1Formulaire from "./SpecInterieurPartie1Formulaire";
+import SpecInterieurPartie2Formulaire from "./SpecInterieurPartie2Formulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
 
@@ -30,6 +31,7 @@ export default function FicheVisite() {
     telephone: "",
     cellulaire: "",
     email: "",
+
     //partie habitation du formulaire
     prixDemande: "",
     evalMunicipale: "",
@@ -40,6 +42,7 @@ export default function FicheVisite() {
     proprieteRevenu: "false",
     revenuMensuel: "",
     quartier: "",
+
     //partie adresse du formulaire
     numeroCivic: "",
     nomRue: "",
@@ -50,6 +53,7 @@ export default function FicheVisite() {
     egout: "",
     eau: "",
     circulation: "",
+
     //partie extérieur
     fondation: "",
     revetExterieur: "",
@@ -80,11 +84,26 @@ export default function FicheVisite() {
     interieurPMsoleil: "",
     exterieurDevantSoleilAM: false,
     exterieurDevantSoleilPM: false,
-
     exterieurArriereSoleilAM: false,
     exterieurArriereSoleilPM: false,
-
     //fin subliste : ensoleillement
+
+    //partie intérieur
+    superficieHab: "",
+    isolationSousSol: "",
+    isolationMurs: "",
+    isolationPlafonds: "",
+    typeChauffeEau: "",
+    chauffeEau: "",
+    sysElectrique: "",
+    sysElectriqueAutre: "",
+    chauffage: "",
+    fournaise: "",
+    recuperateur: "",
+    climatisation: "",
+    securiteAlarme: false,
+    securiteDetecteur: false,
+    securiteExtincteur: false,
   });
   //Tableau des pages du formulaire
   const pages = [
@@ -95,6 +114,7 @@ export default function FicheVisite() {
     <SpecExterieurPartie2Formulaire info={info} setInfo={setInfo} />,
     <EnsoleillementFormulaire info={info} setInfo={setInfo} />,
     <SpecInterieurPartie1Formulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie2Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <RangementFormulaire info={info} setInfo={setInfo} />,
   ];
