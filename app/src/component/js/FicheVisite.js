@@ -104,6 +104,10 @@ export default function FicheVisite() {
     securiteAlarme: false,
     securiteDetecteur: false,
     securiteExtincteur: false,
+
+    // À proximité
+    proximite: {},
+    km:""
   });
   //Tableau des pages du formulaire
   const pages = [
