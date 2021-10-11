@@ -1,6 +1,7 @@
 import React from "react";
 import {Form,Button} from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 
 export default function ServicesFormulaire({ info, setInfo }) {
@@ -68,12 +69,12 @@ export default function ServicesFormulaire({ info, setInfo }) {
             <Button variant="primary"
                     onClick={handleAddClick}
             >
-              Ajouter
+              <FontAwesomeIcon icon={faPlus}/>
             </Button>
             <Button variant="danger"
                     onClick={handleRemoveClick}
             >
-              Retirer
+              <FontAwesomeIcon icon={faMinus}/>
             </Button>
             </div>
             {/* fin km à proximité */}
