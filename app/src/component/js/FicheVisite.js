@@ -14,6 +14,7 @@ import SpecExterieurPartie2Formulaire from "./SpecExterieurPartie2Formulaire";
 import EnsoleillementFormulaire from "./EnsoleillementFormulaire";
 import SpecInterieurPartie1Formulaire from "./SpecInterieurPartie1Formulaire";
 import SpecInterieurPartie2Formulaire from "./SpecInterieurPartie2Formulaire";
+import SpecInterieurPartie3Formulaire from "./SpecInterieurPartie3Formulaire";
 import OccupationEtInclusFormulaire from "./OccupationEtInclusFormulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
@@ -106,6 +107,21 @@ export default function FicheVisite() {
     securiteAlarme: false,
     securiteDetecteur: false,
     securiteExtincteur: false,
+    nbrPieces: "",
+    nbrChambreRDC: "",
+    nbrChambreEtage: "",
+    nbrChambreSS: "",
+    bainPrincipale: "",
+    doucheBainPrincipale: false,
+    baignoireBainPrincipale: false,
+    nbrSalleEauToilette: "",
+    nbrSalleEauBain: "",
+    laverie: "",
+    salleManger: "",
+    salon: "",
+    foyer: "",
+    poele: "",
+    espaceBureau: "",
 
     // À proximité
     proximite: {},
@@ -131,6 +147,7 @@ export default function FicheVisite() {
     <EnsoleillementFormulaire info={info} setInfo={setInfo} />,
     <SpecInterieurPartie1Formulaire info={info} setInfo={setInfo} />,
     <SpecInterieurPartie2Formulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie3Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <OccupationEtInclusFormulaire info={info} setInfo={setInfo} />,
     <RangementFormulaire info={info} setInfo={setInfo} />,

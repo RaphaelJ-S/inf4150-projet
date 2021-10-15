@@ -140,6 +140,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               size="sm"
               name="sysElectrique"
               id="sysElectrique"
+              value={info.sysElectrique}
               aria-label="Selection du système électrique"
               onChange={handleChange}
             >
@@ -193,13 +194,13 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           <div className="form-floating">
             <select
               className="form-select"
-              aria-label="Selection du type de chauffage"
+              aria-label="Selection du type de fournaise"
               name="fournaise"
               id="fournaise"
               value={info.fournaise}
               onChange={handleChange}
             >
-              <option value="">Sélectionnez le type de chauffage</option>
+              <option value="">Sélectionnez le type de fournaise</option>
               <option value="louee">Louée</option>
               <option value="achetee">Achetée</option>
             </select>

@@ -112,6 +112,126 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             </div>
           </div>
           {/* fin type sécurite feu*/}
+
+          {/* début nombre de pièces */}
+          <div className="form-floating">
+            <input
+              type="number"
+              className="form-control"
+              id="nbrPieces"
+              name="nbrPieces"
+              value={info.nbrPieces}
+              onChange={handleChange}
+            />
+            <label htmlFor="nbrPieces">Nombre de pièces</label>
+          </div>
+          {/* fin nombre de pièces */}
+
+          {/* début nombre chambres à coucher rez-de-chaussée */}
+          <div className="form-floating">
+            <input
+              type="number"
+              className="form-control"
+              id="nbrChambreRDC"
+              name="nbrChambreRDC"
+              value={info.nbrChambreRDC}
+              onChange={handleChange}
+            />
+            <label htmlFor="nbrChambreRDC">
+              Nombre de chambres à coucher : Rez-de-chaussée
+            </label>
+          </div>
+          {/* fin nombre chambres à coucher rez-de-chaussée */}
+
+          {/* début nombre chambres à coucher Etage */}
+          <div className="form-floating">
+            <input
+              type="number"
+              className="form-control"
+              id="nbrChambreEtage"
+              name="nbrChambreEtage"
+              value={info.nbrChambreEtage}
+              onChange={handleChange}
+            />
+            <label htmlFor="nbrChambreEtage">
+              Nombre de chambres à coucher : Étage
+            </label>
+          </div>
+          {/* fin nombre chambres à coucher Etage */}
+
+          {/* début nombre chambres à coucher sous-sol */}
+          <div className="form-floating">
+            <input
+              type="number"
+              className="form-control"
+              id="nbrChambreSS"
+              name="nbrChambreSS"
+              value={info.nbrChambreSS}
+              onChange={handleChange}
+            />
+            <label htmlFor="nbrChambreSS">
+              Nombre de chambre à coucher : Sous-sol
+            </label>
+          </div>
+          {/* fin nombre chambres à coucher sous-sol */}
+          <p className="mt-3"></p>
+          {/* début salle de bain dans salle coucher principale */}
+          <div className="proRev">
+            <div className="label-texte">
+              <label htmlFor="bainPrincipale" className="label noselect">
+                Chambre à coucher principale avec salle de bain
+              </label>
+            </div>
+            <select
+              className="form-select sm"
+              size="sm"
+              name="bainPrincipale"
+              id="bainPrincipale"
+              value={info.bainPrincipale}
+              aria-label="Selection du système électrique"
+              onChange={handleChange}
+            >
+              <option value="">
+                Sélectionnez l'existance d'une salle de bain et ses
+                spécifications
+              </option>
+              <option value="oui">Oui</option>
+              <option value="non">Non</option>
+            </select>
+
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                name="doucheBainPrincipale"
+                id="doucheBainPrincipale"
+                disabled={info.bainPrincipale !== "oui"}
+                onChange={handleChangeBool}
+                checked={info.doucheBainPrincipale}
+              />
+              <label
+                htmlFor="doucheBainPrincipale"
+                className="form-check-label"
+              >
+                Douche
+              </label>
+            </div>
+            <div className="form-check">
+              <input
+                type="checkbox"
+                className="form-check-input"
+                name="baignoireBainPrincipale"
+                id="baignoireBainPrincipale"
+                disabled={info.bainPrincipale !== "oui"}
+                onChange={handleChangeBool}
+                checked={info.baignoireBainPrincipale}
+              />
+              <label htmlFor="securiteDetecteur" className="form-check-label">
+                Baignoire
+              </label>
+            </div>
+          </div>
+          {/* fin salle de bain dans salle coucher principale */}
         </Form>
       </main>
     </section>
