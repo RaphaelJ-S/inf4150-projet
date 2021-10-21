@@ -2,14 +2,6 @@ import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAddressBook,
-  faUser,
-  faPhone,
-  faMobile,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
 
 export default function IdentiteFormulaire({ info, setInfo }) {
   const handleChange = (event) => {
@@ -22,93 +14,76 @@ export default function IdentiteFormulaire({ info, setInfo }) {
       <section className="text-center">
         <main className="form-signin">
           <Form>
+            {/* début adresse */}
             <div className="form-floating">
-              <i className="fa-address-book-o" />
               <input
                 type="text"
                 className="form-control"
                 id="floatingAdresse"
                 name="adresse"
+                value={info.adresse}
                 onChange={handleChange}
                 autoFocus
               />
-              <label htmlFor="floatingAdresse">
-                <ion-icon
-                  className="text-primary"
-                  name="person-outline"
-                ></ion-icon>
-                Adresse
-              </label>
+              <label htmlFor="floatingAdresse">Adresse</label>
             </div>
+            {/* fin adresse */}
+
+            {/* début courtier */}
             <div className="form-floating">
-              <i className="fa fa-user" />
               <input
                 type="text"
                 className="form-control"
                 id="floatingCourtier"
                 name="courtier"
+                value={info.courtier}
                 onChange={handleChange}
               />
-              <label htmlFor="floatingCourtier">
-                <ion-icon
-                  className="text-primary"
-                  name="person-outline"
-                ></ion-icon>
-                Courtier/Vendeur
-              </label>
+              <label htmlFor="floatingCourtier">Courtier/Vendeur</label>
             </div>
+            {/* fin courtier */}
+
+            {/* début téléphone */}
             <div className="form-floating">
-              <i className="fa-phone" />
               <input
                 type="text"
                 className="form-control"
                 id="floatingPhone"
                 name="telephone"
+                value={info.telephone}
                 onChange={handleChange}
               />
-              <label htmlFor="floatingPhone">
-                <ion-icon
-                  className="text-primary"
-                  name="person-outline"
-                ></ion-icon>
-                Téléphone
-              </label>
+              <label htmlFor="floatingPhone">Téléphone</label>
             </div>
+            {/* fin téléphone */}
+
+            {/* début cellulaire */}
             <div className="form-floating">
-              <i className="fa-mobile" />
               <input
                 type="text"
                 className="form-control"
                 id="floatingCell"
                 name="cellulaire"
+                value={info.cellulaire}
                 onChange={handleChange}
               />
-              <label htmlFor="floatingCell">
-                <ion-icon
-                  className="text-primary"
-                  name="person-outline"
-                ></ion-icon>
-                Cellulaire
-              </label>
+              <label htmlFor="floatingCell">Cellulaire</label>
             </div>
+            {/* fin cellulaire */}
+
+            {/* début email */}
             <div className="form-floating">
-              <i className="fa-envelope-o" />
               <input
                 type="email"
                 className="form-control"
                 id="floatingEmail"
                 name="email"
-                placeholder="name@exemple.com"
+                value={info.email}
                 onChange={handleChange}
               />
-              <label htmlFor="floatingEmail">
-                <ion-icon
-                  className="text-primary"
-                  name="person-outline"
-                ></ion-icon>
-                Courriel
-              </label>
+              <label htmlFor="floatingEmail">Courriel</label>
             </div>
+            {/* fin email */}
           </Form>
         </main>
       </section>

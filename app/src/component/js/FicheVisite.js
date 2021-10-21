@@ -1,20 +1,24 @@
+//imports externes
 import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+//imports locaux
 import IdentiteFormulaire from "./IdentiteFormulaire";
 import HabitationFormulaire from "./HabitationFormulaire";
-
 import AdresseFormulaire from "./AdresseFormulaire";
 import RangementFormulaire from "./RangementFormulaire";
 import ServicesFormulaire from "./ServicesFormulaire";
-import SpecExterieurFormulaire from "./SpecExterieurFormulaire";
-import SpecInterieurFormulaire from "./SpecInterieurFormulaire";
+import SpecExterieurPartie1Formulaire from "./SpecExterieurPartie1Formulaire";
+import SpecExterieurPartie2Formulaire from "./SpecExterieurPartie2Formulaire";
+import EnsoleillementFormulaire from "./EnsoleillementFormulaire";
+import SpecInterieurPartie1Formulaire from "./SpecInterieurPartie1Formulaire";
+import SpecInterieurPartie2Formulaire from "./SpecInterieurPartie2Formulaire";
+import SpecInterieurPartie3Formulaire from "./SpecInterieurPartie3Formulaire";
+import OccupationEtInclusFormulaire from "./OccupationEtInclusFormulaire";
 import BarreProgression from "./BarreProgression";
-import { Button } from "react-bootstrap";
 import Logo from "../../assets/images/fiche_de_visite.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleRight,
-  faAngleDoubleLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import Test from "./Test";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -30,50 +34,124 @@ export default function FicheVisite() {
     telephone: "",
     cellulaire: "",
     email: "",
+
     //partie habitation du formulaire
     prixDemande: "",
     evalMunicipale: "",
-    taxeScholaire: "",
+    taxeScolaire: "",
     taxeMunicipale: "",
     construction: "",
     typeHabitation: "",
     proprieteRevenu: "false",
     revenuMensuel: "",
+    quartier: "",
+
     //partie adresse du formulaire
     numeroCivic: "",
     nomRue: "",
     numeroAppartement: "",
     codePostale: "",
+    ageImmeuble: 0,
     bruitAmbiant: "",
     egout: "",
     eau: "",
     circulation: "",
-    quartier: "",
+
     //partie extérieur
     fondation: "",
     revetExterieur: "",
+    autreRevet: "",
     fenVitrage: "",
     fenConstruction: "",
     toiture: "",
     etatToiture: "",
     tailleTerrain: "",
-    amenagementTerrain: "",
+    descriptTaille: "",
+    // subliste : les aménagements extérieurs
+    pelouse: false,
+    boise: false,
+    terrasseCouverte: false,
+    terrasseNonCouverte: false,
+    gazebo: false,
+    cabanon: false,
+    cloture: false,
+    haie: false,
+    //fin subliste : aménagements extérieurs
     piscine: "",
-    chaufePiscine: "",
-    stationnementCouverture: "",
-    placeStationnement:"",
+    chauffePiscine: "",
+    typeStationnement: "",
+    nombreStationnement: "",
     entree: "",
-    orientationEnsoleil: ""
+    //subliste : ensoleillement
+    interieurAMsoleil: "",
+    interieurPMsoleil: "",
+    exterieurDevantSoleilAM: false,
+    exterieurDevantSoleilPM: false,
+    exterieurArriereSoleilAM: false,
+    exterieurArriereSoleilPM: false,
+    //fin subliste : ensoleillement
+
+    //partie intérieur
+    superficieHab: "",
+    isolationSousSol: "",
+    isolationMurs: "",
+    isolationPlafonds: "",
+    typeChauffeEau: "",
+    chauffeEau: "",
+    sysElectrique: "",
+    sysElectriqueAutre: "",
+    chauffage: "",
+    fournaise: "",
+    recuperateur: "",
+    climatisation: "",
+    securiteAlarme: false,
+    securiteDetecteur: false,
+    securiteExtincteur: false,
+    nbrPieces: "",
+    nbrChambreRDC: "",
+    nbrChambreEtage: "",
+    nbrChambreSS: "",
+    bainPrincipale: "",
+    doucheBainPrincipale: false,
+    baignoireBainPrincipale: false,
+    nbrSalleEauToilette: "",
+    nbrSalleEauBain: "",
+    laverie: "",
+    salleManger: "",
+    salon: "",
+    foyer: "",
+    poele: "",
+    espaceBureau: "",
+
+    // À proximité
+    proximite: {},
+    km: "",
+
+    //Date Occupation
+    dateOccupation: "",
+
+    // Inclus
+    inclus: {},
+    descriptionInclus: "",
+
+    //test
+    tab: [],
   });
   //Tableau des pages du formulaire
   const pages = [
     <IdentiteFormulaire info={info} setInfo={setInfo} />,
     <HabitationFormulaire info={info} setInfo={setInfo} />,
     <AdresseFormulaire info={info} setInfo={setInfo} />,
-    <SpecExterieurFormulaire info={info} setInfo={setInfo} />,
-    <SpecInterieurFormulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurPartie1Formulaire info={info} setInfo={setInfo} />,
+    <SpecExterieurPartie2Formulaire info={info} setInfo={setInfo} />,
+    <EnsoleillementFormulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie1Formulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie2Formulaire info={info} setInfo={setInfo} />,
+    <SpecInterieurPartie3Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
+    <OccupationEtInclusFormulaire info={info} setInfo={setInfo} />,
     <RangementFormulaire info={info} setInfo={setInfo} />,
+    <Test info={info} setInfo={setInfo} />,
   ];
 
   //le numéros dans le tableau 'pages' de la page  courante
@@ -95,11 +173,11 @@ export default function FicheVisite() {
           onClick={() => setNumPage(numPage - 1)}
           disabled={numPage <= 0}
         >
-          <FontAwesomeIcon icon={faAngleDoubleLeft} size="3x"></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faArrowLeft} size="3x"></FontAwesomeIcon>
         </button>
 
         {/* La barre de progression du formulaire */}
-        <BarreProgression numPage={numPage} />
+        <BarreProgression numPage={numPage} setNumPage={setNumPage} />
 
         {/* Le bouton de navigation vers la partie suivant du formulaire*/}
         <button
@@ -107,18 +185,12 @@ export default function FicheVisite() {
           onClick={() => setNumPage(numPage + 1)}
           disabled={numPage >= pages.length - 1}
         >
-          <FontAwesomeIcon
-            icon={faAngleDoubleRight}
-            size="3x"
-          ></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faArrowRight} size="3x"></FontAwesomeIcon>
         </button>
       </div>
 
       {/* La page active du formulaire */}
       {pages[numPage]}
-    </div>
-    <div className="footer">
-      le footer
     </div>
     </div>
   );

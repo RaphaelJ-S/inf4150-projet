@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
@@ -23,72 +23,99 @@ export default function HabitationFormulaire({ info, setInfo }) {
     <section className="text-center">
       <main className="form-signin">
         <Form>
+          {/* début prix demandé */}
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
               id="prixDem"
               name="prixDemande"
+              value={info.prixDemande}
               autoFocus
               onChange={handleChange}
             />
             <label htmlFor="prixDem">Prix Demandé</label>
           </div>
+          {/* fin prix demandé */}
+
+          {/* début évaluation municipale */}
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
               id="eval"
               name="evalMunicipale"
+              value={info.evalMunicipale}
               onChange={handleChange}
             />
             <label htmlFor="eval">Évaluation municipale</label>
           </div>
+          {/* fin évaluation municipale */}
+
+          {/* début taxe scolaire */}
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
-              id="taxeSchol"
-              name="taxeScholaire"
+              id="taxeScol"
+              name="taxeScolaire"
+              value={info.taxeSchol}
               onChange={handleChange}
             />
-            <label htmlFor="taxeSchol">Montant de la taxe scolaire</label>
+            <label htmlFor="taxeScol">Montant de la taxe scolaire</label>
           </div>
+          {/* fin taxe scolaire */}
+
+          {/* début taxe municipale */}
           <div className="form-floating">
             <input
               type="text"
               className="form-control"
               id="taxeMuni"
               name="taxeMunicipale"
+              value={info.taxeMunicipale}
               onChange={handleChange}
             />
             <label htmlFor="taxeMuni">Montant de la taxe municipale</label>
           </div>
+          {/* fin taxe municipale */}
+
+          <br />
+          {/* début état construction */}
           <div className="form-floating">
             <select
               className="form-select"
               aria-label="Selection de la construction"
               name="construction"
               id="construct"
+              value={info.construction}
               onChange={handleChange}
             >
+              <option defaultValue="">
+                Sélectionnez l'état de la construction
+              </option>
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
             </select>
             <label htmlFor="construct">Construction</label>
           </div>
+          {/* fin état construction */}
+
+          {/* début type habitation */}
           <div className="form-floating">
             <select
               className="form-select"
               aria-label="Selection du type d'habitation"
               name="typeHabitation"
               id="typeHabitation"
+              value={info.typeHabitation}
               onChange={handleChange}
             >
+              <option defaultValue="">Sélectionnez un type d'habitation</option>
               <option value="maisonIndividuelle">Maison individuelle</option>
               <option value="duplex">Duplex</option>
               <option value="tourHabitation">Tour d'habitation</option>
-              <option value="maisonJemelee">Maison jumelée</option>
+              <option value="maisonJumelee">Maison jumelée</option>
               <option value="triplex">Triplex</option>
               <option value="bungalow">Plain-pied(bungalow)</option>
               <option value="maisonRangee">Maison en rangée</option>
@@ -97,11 +124,40 @@ export default function HabitationFormulaire({ info, setInfo }) {
             </select>
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
+          {/* fin type habitation */}
+
+          {/* début zonage quartier */}
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Selection du quartier"
+              name="quartier"
+              id="quartier"
+              value={info.quartier}
+              onChange={handleChange}
+            >
+              <option defaultValue="">
+                Sélectionnez le zonage du quartier
+              </option>
+              <option value="residentiel">Résidentiel</option>
+              <option value="commerce-industriel">
+                Commercial ou industriel
+              </option>
+              <option value="rural">Rural</option>
+            </select>
+            <label htmlFor="quartier">Quartier</label>
+          </div>
+          {/* fin zonage quartier */}
+
+          <br />
+          {/* début propriété revenu */}
           <div className="proRev">
-            <div className="label-revenu">
-              <span className="label-revenu-texte">Propriété à revenu?</span>
+            <div className="label-texte">
+              <label htmlFor="revenu" className="label noselect">
+                Propriété à revenu?
+              </label>
             </div>
-            <div className="input-group mb-3">
+            <div className="input-group">
               <button
                 className="btn btn-outline-success"
                 style={btnStyle}
@@ -132,11 +188,12 @@ export default function HabitationFormulaire({ info, setInfo }) {
                 disabled={info.proprieteRevenu === "false"}
                 onChange={handleChange}
               />
-              <label htmlFor="revenu" className="input-group-text">
+              <label htmlFor="revenu" className="input-group-text noselect">
                 $/m
               </label>
             </div>
           </div>
+          {/* fin propriété revenu */}
         </Form>
       </main>
     </section>
