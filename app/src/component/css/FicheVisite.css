@@ -122,6 +122,11 @@ form {
   border-bottom-left-radius: 0;
 }
 
+.text-center {
+  width: 100%;
+  justify-content: center;
+}
+
 .form-signin input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;

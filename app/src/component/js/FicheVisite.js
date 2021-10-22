@@ -131,7 +131,7 @@ export default function FicheVisite() {
     dateOccupation: "",
 
     // Inclus
-    inclus: {},
+    inclus: [],
     descriptionInclus: "",
 
     //test
