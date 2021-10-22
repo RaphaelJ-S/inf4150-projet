@@ -6,16 +6,35 @@ import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 export default function ServicesFormulaire({ info, setInfo }) {
 
-  const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInfo({ ...info, [name]: value });
+  const handleChange = (e) => {
+    console.log(info.proximite);
+    let uptItems = [...info.proximite];
+    uptItems[e.target.id].valeur = e.target.value;
+    setInfo({ ...info, proximite: uptItems });
   };
 
-  const handleAddClick = (event) =>{
+  const handleChangeDist = (e) => {
+    let uptItems = [...info.proximite];
+    uptItems[e.target.id].distance = e.target.value;
+    setInfo({ ...info, proximite: uptItems });
+};
 
+  const addItem = (e) => {
+    e.preventDefault();
+    let item = {
+      id: info.proximite.length,
+      valeur: "",
+      distance: "",
+    };
+    setInfo({ ...info, proximite: [...info.proximite, item] });
   };
-  const handleRemoveClick = (event) =>{};
+
+  const removeItem = (e) => {
+    e.preventDefault();
+    info.proximite.pop();
+    setInfo({ ...info, proximite: [...info.proximite] });
+    console.log(info.proximite);
+}
 
   return(
       <section className="text-center">
@@ -23,13 +42,16 @@ export default function ServicesFormulaire({ info, setInfo }) {
           <Form>
             {/* début Autres infos - Proximité */}
             {/* début chauffe-eau */}
+            {info.proximite.map((elem) => {
+        return (
+          <div key={elem.id}>
             <div className="form-floating">
               <select
                   className="form-select"
                   aria-label="Selection à proximité"
                   name="proximite"
-                  id="proximite"
-                  value={info.proximite}
+                  id={elem.id}
+                  value={elem.valeur}
                   onChange={handleChange}
               >
                 <option value="">Sélectionnez  </option>
@@ -50,36 +72,33 @@ export default function ServicesFormulaire({ info, setInfo }) {
               </select>
               <label htmlFor="proximite">En proximité de: </label>
             </div>
-
-            {/* début km à proximité */}
             <div className="form-floating">
             <input
                 type="text"
                 className="form-control"
-                id="km"
+                id={elem.id}
                 name="km"
-                value={info.km}
+                value={elem.distance}
                 placeholder="Distance en km"
-                disabled={info.proximite === ""}
-                onChange={handleChange}
+                disabled={elem.valeur === ""}
+                onChange={handleChangeDist}
             />
             <label htmlFor="km">Distance (en km)</label>
             </div>
-            <div className="form-floating">
-            <Button variant="primary"
-                    onClick={handleAddClick}
-            >
-              <FontAwesomeIcon icon={faPlus}/>
-            </Button>
-            <Button variant="danger"
-                    onClick={handleRemoveClick}
-            >
-              <FontAwesomeIcon icon={faMinus}/>
-            </Button>
-            </div>
             {/* fin km à proximité */}
             {/* fin Autres infos - Proximité*/}
-          </Form>
+          </div>
+            );
+          })}
+          <div className="form-floating">
+          <button className="btn btn-outline-primary" onClick={addItem}>
+        Ajouter un service
+      </button>
+      <button className="btn btn-outline-primary" onClick={removeItem}>
+        Enlever un service
+      </button>
+            </div>
+            </Form>
         </main>
       </section>
   );

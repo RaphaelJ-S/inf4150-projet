@@ -18,7 +18,6 @@ import SpecInterieurPartie3Formulaire from "./SpecInterieurPartie3Formulaire";
 import OccupationEtInclusFormulaire from "./OccupationEtInclusFormulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
-import Test from "./Test";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -124,18 +123,12 @@ export default function FicheVisite() {
     espaceBureau: "",
 
     // À proximité
-    proximite: {},
-    km: "",
+    proximite: [{id: 0, valeur: "", distance: ""}],
 
     //Date Occupation
     dateOccupation: "",
-
-    // Inclus
-    inclus: [],
-    descriptionInclus: "",
-
     //test
-    tab: [],
+    inclus: [],
   });
   //Tableau des pages du formulaire
   const pages = [
@@ -150,8 +143,7 @@ export default function FicheVisite() {
     <SpecInterieurPartie3Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <OccupationEtInclusFormulaire info={info} setInfo={setInfo} />,
-    <RangementFormulaire info={info} setInfo={setInfo} />,
-    <Test info={info} setInfo={setInfo} />,
+    <RangementFormulaire info={info} setInfo={setInfo} />
   ];
 
   //le numéros dans le tableau 'pages' de la page  courante

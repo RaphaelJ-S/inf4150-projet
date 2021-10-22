@@ -7,9 +7,9 @@ import { DynamicField } from "./DynamicField";
 export default function OccupationEtInclusFormulaire({ info, setInfo }) {
 
     const handleChange = (e) => {
-        let uptItems = [...info.dateOccupation];
+        let uptItems = [...info.inclus];
         uptItems[e.target.id].valeur = e.target.value;
-        setInfo({ ...info, tab: uptItems });
+        setInfo({ ...info, inclus: uptItems });
     };
 
     const handleChangeDate = (e) => {
@@ -19,25 +19,26 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
     };
     
     const handleChangeDesc = (e) => {
-        let uptItems = [...info.tab];
+        let uptItems = [...info.inclus];
         uptItems[e.target.id].description = e.target.value;
-        setInfo({ ...info, tab: uptItems });
+        setInfo({ ...info, inclus: uptItems });
     };
     
     const addItem = (e) => {
       e.preventDefault();
       let item = {
-        id: info.tab.length,
+        id: info.inclus.length,
         valeur: "",
         description: "",
       };
-      setInfo({ ...info, tab: [...info.tab, item] });
+      setInfo({ ...info, inclus: [...info.inclus, item] });
     };
 
     const removeItem = (e) => {
         e.preventDefault();
         info.tab.pop();
         setInfo({ ...info, tab: [...info.tab] });
+        console.log(info.tab);
     }
 
     return (
@@ -58,7 +59,7 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
                         </label>
                     </div>
                     <br/>
-        {info.tab.map((elem) => {
+        {info.inclus.map((elem) => {
         return (
           <div key={elem.id}>
                 <div className="form-floating" >
