@@ -1,35 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import "../../assets/css/bootstrap.min.css";
+import { Form } from "react-bootstrap";
+import "../css/FicheVisite.css";
 
 export default function Test({ info, setInfo }) {
   const handleChange = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.id);
     let uptItems = [...info.tab];
     uptItems[e.target.id].valeur = e.target.value;
     setInfo({ ...info, tab: uptItems });
   };
 
     const handleChangeDesc = (e) => {
-    console.log(e.target.value);
-    console.log(e.target.id);
     let uptItems = [...info.tab];
     uptItems[e.target.id].description = e.target.value;
     setInfo({ ...info, tab: uptItems });
   };
 
-  const addItem = () => {
+  const addItem = (e) => {
+    e.preventDefault();
     let item = {
       id: info.tab.length,
       valeur: "",
       description: "",
     };
     setInfo({ ...info, tab: [...info.tab, item] });
-    console.log(item);
   };
-  console.log(info);
+
 
   return (
-    <div>
+    <section className="text-center">
+      <main className="form-signin">
+        <Form>
       {info.tab.map((elem) => {
         return (
           <div key={elem.id}>
@@ -68,7 +69,10 @@ export default function Test({ info, setInfo }) {
       })}
       <button className="btn btn-outline-primary" onClick={addItem}>
         Ajouter un item
-      </button>{" "}
-    </div>
+      </button>
+    </Form>
+    </main>
+    </section>
+
   );
 }
