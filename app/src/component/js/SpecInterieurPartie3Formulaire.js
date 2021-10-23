@@ -166,6 +166,27 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="espaceBureau">Espace de bureau</label>
           </div>
           {/* fin espace bureau */}
+
+          <div className="form-floating">
+            <select
+              className="form-select"
+              aria-label="Etat du sous-sol"
+              name="sousSol"
+              id="sousSol"
+              value={info.sousSol}
+              onChange={handleChange}
+            >
+              <option value="">
+                Sélectionnez l'état du sous-sol
+              </option>
+              <option value="Fini">Fini</option>
+              <option value="Non fini">Non fini</option>
+              <option value="Salle de jeu (enfants)">Salle de jeu (enfants)</option>
+              <option value="Salle familiale">Salle familiale</option>
+              <option value="Rangement">Rangement</option>
+            </select>
+            <label htmlFor="sousSol">État du sous-sol</label>
+          </div>
         </Form>
       </main>
     </section>

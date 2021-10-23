@@ -84,7 +84,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               onChange={handleChange}
             />
             <label htmlFor="isolationPlafonds">
-              Indice d'isolation : sous-sol
+              Indice d'isolation : Plafonds
             </label>
           </div>
           {/** fin indice isolation plafonds */}

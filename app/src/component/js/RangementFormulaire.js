@@ -1,14 +1,17 @@
 import React from "react";
+import {Router, Route, Link, useHistory, BrowserRouter } from "react-router-dom";
 import {Form,Button} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
+import PageResultat from "./PageResultat";
 
-export default function RangementFormulaire({info, setInfo}) {
+export default function RangementFormulaire({info, setInfo, setNumPage, numPage}) {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInfo({ ...info, [name]: value });
   };
+  
   const handleChangeBool = (event) => {
     const name = event.target.name;
     const value = !info[name];
@@ -189,7 +192,14 @@ export default function RangementFormulaire({info, setInfo}) {
             </label>
             </div>
           </div>
-
+          <p className="control">
+          <button
+            className="btn-suivant"
+            onClick={() => setNumPage(numPage + 1)}
+          >
+          Soumettre le formulaire
+        </button>
+          </p>
           {/* fin espace bureau */}
         </Form>
       </main>

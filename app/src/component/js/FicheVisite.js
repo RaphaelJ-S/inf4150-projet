@@ -18,6 +18,7 @@ import SpecInterieurPartie3Formulaire from "./SpecInterieurPartie3Formulaire";
 import OccupationEtInclusFormulaire from "./OccupationEtInclusFormulaire";
 import BarreProgression from "./BarreProgression";
 import Logo from "../../assets/images/fiche_de_visite.png";
+import PageResultat from "./PageResultat";
 
 /* Ce component s'occupe de l'affichage des différentes partie du formulaire
 
@@ -41,7 +42,7 @@ export default function FicheVisite() {
     taxeMunicipale: "",
     construction: "",
     typeHabitation: "",
-    proprieteRevenu: "false",
+    proprieteRevenu: false,
     revenuMensuel: "",
     quartier: "",
 
@@ -66,6 +67,7 @@ export default function FicheVisite() {
     etatToiture: "",
     tailleTerrain: "",
     descriptTaille: "",
+
     // subliste : les aménagements extérieurs
     pelouse: false,
     boise: false,
@@ -79,7 +81,7 @@ export default function FicheVisite() {
     piscine: "",
     chauffePiscine: "",
     typeStationnement: "",
-    nombreStationnement: "",
+    nombreStationnement: "0",
     entree: "",
     //subliste : ensoleillement
     interieurAMsoleil: "",
@@ -107,29 +109,42 @@ export default function FicheVisite() {
     securiteDetecteur: false,
     securiteExtincteur: false,
     nbrPieces: "",
-    nbrChambreRDC: "",
-    nbrChambreEtage: "",
-    nbrChambreSS: "",
-    bainPrincipale: "",
+    nbrChambreRDC: "0",
+    nbrChambreEtage: "0",
+    nbrChambreSS: "0",
+    bainPrincipale: "non",
     doucheBainPrincipale: false,
     baignoireBainPrincipale: false,
-    nbrSalleEauToilette: "",
-    nbrSalleEauBain: "",
-    laverie: "",
+    nbrSalleEauToilette: "0",
+    nbrSalleEauBain: "0",
+    laverie: "0",
     salleManger: "",
     salon: "",
     foyer: "",
     poele: "",
     espaceBureau: "",
+    sousSol: "",
 
     // À proximité
     proximite: [{id: 0, valeur: "", distance: ""}],
 
     //Date Occupation
     dateOccupation: "",
-    //test
-    inclus: [],
+    
+    //meubles inclus
+    inclus: [{id: 0, valeur: "", description: ""}],
+  
+    //rangement suffisant
+    rezDeChausse: "",
+    Cuisine: "",
+    PEtage: "",
+    DEtage: "",
+    sousSol: "",
   });
+  
+  //le numéros dans le tableau 'pages' de la page  courante
+  const [numPage, setNumPage] = useState(0);
+
   //Tableau des pages du formulaire
   const pages = [
     <IdentiteFormulaire info={info} setInfo={setInfo} />,
@@ -143,11 +158,9 @@ export default function FicheVisite() {
     <SpecInterieurPartie3Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <OccupationEtInclusFormulaire info={info} setInfo={setInfo} />,
-    <RangementFormulaire info={info} setInfo={setInfo} />
+    <RangementFormulaire info={info} setInfo={setInfo} numPage={numPage} setNumPage={setNumPage}/>,
+    <PageResultat info={info}/>
   ];
-
-  //le numéros dans le tableau 'pages' de la page  courante
-  const [numPage, setNumPage] = useState(0);
 
   return (
     <div className="std-page-container">
@@ -175,7 +188,7 @@ export default function FicheVisite() {
         <button
           className="btn-suivant"
           onClick={() => setNumPage(numPage + 1)}
-          disabled={numPage >= pages.length - 1}
+          disabled={numPage >= pages.length - 2 }
         >
           <FontAwesomeIcon icon={faArrowRight} size="3x"></FontAwesomeIcon>
         </button>

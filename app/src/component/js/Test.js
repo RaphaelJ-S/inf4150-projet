@@ -44,11 +44,11 @@ export default function Test({ info, setInfo }) {
                         onChange={handleChange}
                         >
                             <option value="">Sélectionnez</option>
-                            <option value="stores">Stores</option>
-                            <option value="luminaires">Luminaires</option>
-                            <option value="equipements">Équipements</option>
-                            <option value="entretienExterieur">Entretien extérieur</option>
-                            <option value="autres">Autres</option>
+                            <option value="Stores">Stores</option>
+                            <option value="Luminaires">Luminaires</option>
+                            <option value="Équipements">Équipements</option>
+                            <option value="Entretien extérieur">Entretien extérieur</option>
+                            <option value="Autres">Autres</option>
                     </select>
                     <label htmlFor="proximite">Inclus dans la vente </label>
                 </div>

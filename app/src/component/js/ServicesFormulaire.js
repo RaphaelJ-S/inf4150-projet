@@ -55,19 +55,19 @@ export default function ServicesFormulaire({ info, setInfo }) {
                   onChange={handleChange}
               >
                 <option value="">Sélectionnez  </option>
-                <option value="travail">Travail</option>
-                <option value="TravailConjoint">Travail du conjoint</option>
-                <option value="ecole">École</option>
-                <option value="transport">Transport en commun</option>
-                <option value="epiceries">Épiceries</option>
-                <option value="centresCommerciaux">Centres Commerciaux</option>
-                <option value="centresRecreatifs">Centres Récréatifs</option>
-                <option value="lieuxCulte">Lieu de culte</option>
-                <option value="medecin">Médecin</option>
-                <option value="hopital">Hôpital</option>
-                <option value="servicePolice">Service de police</option>
-                <option value="serviceIncendies">Service d'incendie</option>
-                <option value="dentiste">Dentiste</option>
+                <option value="Travail">Travail</option>
+                <option value="Travail du conjoint">Travail du conjoint</option>
+                <option value="École">École</option>
+                <option value="Transport en commun">Transport en commun</option>
+                <option value="Épiceries">Épiceries</option>
+                <option value="Centres Commerciaux">Centres Commerciaux</option>
+                <option value="Centres Récréatifs">Centres Récréatifs</option>
+                <option value="Lieu de culte">Lieu de culte</option>
+                <option value="Médecin">Médecin</option>
+                <option value="Hôpital">Hôpital</option>
+                <option value="Service de police">Service de police</option>
+                <option value="Service d'incendie">Service d'incendie</option>
+                <option value="Dentiste">Dentiste</option>
                 <option value="Veterinaire">Vétérinaire</option>
               </select>
               <label htmlFor="proximite">En proximité de: </label>
