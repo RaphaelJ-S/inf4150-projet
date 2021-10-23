@@ -36,9 +36,9 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
 
     const removeItem = (e) => {
         e.preventDefault();
-        info.tab.pop();
-        setInfo({ ...info, tab: [...info.tab] });
-        console.log(info.tab);
+        info.inclus.pop();
+        setInfo({ ...info, inclus: [...info.inclus] });
+        console.log(info.inclus);
     }
 
     return (
@@ -72,11 +72,11 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
                         onChange={handleChange}
                         >
                             <option value="">Sélectionnez</option>
-                            <option value="stores">Stores</option>
-                            <option value="luminaires">Luminaires</option>
-                            <option value="equipements">Équipements</option>
-                            <option value="entretienExterieur">Entretien extérieur</option>
-                            <option value="autres">Autres</option>
+                            <option value="Stores">Stores</option>
+                            <option value="Luminaires">Luminaires</option>
+                            <option value="Équipements">Équipements</option>
+                            <option value="Entretien extérieur">Entretien extérieur</option>
+                            <option value="Autres">Autres</option>
                     </select>
                     <label htmlFor="proximite">Inclus dans la vente </label>
                 </div>
@@ -95,12 +95,12 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
           </div>
         );
       })}
-      <button className="btn btn-outline-primary" onClick={addItem}>
-        Ajouter un item
-      </button>
-      <button className="btn btn-outline-primary" onClick={removeItem}>
-        Enlever un item
-      </button>
+      <Button variant="primary" onClick={addItem}>
+      <FontAwesomeIcon icon={faPlus}/>
+      </Button>
+      <Button variant="danger" onClick={removeItem}>
+      <FontAwesomeIcon icon={faMinus}/>
+      </Button>
     </Form>
     </main>
     </section>

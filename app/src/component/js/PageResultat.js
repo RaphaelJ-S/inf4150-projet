@@ -93,7 +93,7 @@ export default function RangementFormulaire({info}) {
                             Numéro de l'appartement (si applicable): {info.numeroAppartement}
                         </li>
                         <li>
-                            Code postale: {info.codePostale}
+                            Code postale: {info.codePostal}
                         </li>
                         <li>
                             Âge de l'immeuble: {info.ageImmeuble}
@@ -147,7 +147,7 @@ export default function RangementFormulaire({info}) {
                                 <ul>
                                     {info.pelouse && <li>Pelouse</li>}
                                     {info.boise && <li>Boisé</li>}
-                                    {info.terrasseCouverte && <li>Terresse Couverte</li>}
+                                    {info.terrasseCouverte && <li>Terrasse Couverte</li>}
                                     {info.terrasseNonCouverte && <li>Terrasse non Couverte</li>}
                                     {info.gazebo && <li>Gazebo</li>}
                                     {info.cabanon && <li>Cabanon</li>}
@@ -309,6 +309,7 @@ export default function RangementFormulaire({info}) {
                             )}
                     </ul>
                 </div>
+                <hr></hr>
                 <div className="form-subtitle">
                     Autres informations
                 </div>

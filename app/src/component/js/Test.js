@@ -26,6 +26,12 @@ export default function Test({ info, setInfo }) {
     setInfo({ ...info, tab: [...info.tab, item] });
   };
 
+  const removeItem = (e) => {
+    e.preventDefault();
+    info.proximite.pop();
+    setInfo({ ...info, tab: [...info.tab] });
+    console.log(info.tab);
+}
 
   return (
     <section className="text-center">
@@ -67,8 +73,11 @@ export default function Test({ info, setInfo }) {
           </div>
         );
       })}
-      <button className="btn btn-outline-primary" onClick={addItem}>
-        Ajouter un item
+      <button className="btn btn-outline-primary" onClick={removeItem}>
+      <FontAwesomeIcon icon={faPlus}/>
+      </button>
+      <button className="btn btn-outline-primary" onClick={removeItem}>
+      <FontAwesomeIcon icon={faMinus}/>
       </button>
     </Form>
     </main>

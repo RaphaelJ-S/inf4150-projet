@@ -91,14 +91,14 @@ export default function ServicesFormulaire({ info, setInfo }) {
             );
           })}
           <div className="form-floating">
-          <button className="btn btn-outline-primary" onClick={addItem}>
-        Ajouter un service
-      </button>
-      <button className="btn btn-outline-primary" onClick={removeItem}>
-        Enlever un service
-      </button>
-            </div>
-            </Form>
+            <Button variant="primary" onClick={addItem}>
+            <FontAwesomeIcon icon={faPlus}/>
+            </Button>
+            <Button variant="danger" onClick={removeItem}>
+            <FontAwesomeIcon icon={faMinus}/>
+            </Button>
+          </div>
+          </Form>
         </main>
       </section>
   );

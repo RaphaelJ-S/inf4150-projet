@@ -194,7 +194,7 @@ export default function RangementFormulaire({info, setInfo, setNumPage, numPage}
           </div>
           <p className="control">
           <button
-            className="btn-suivant"
+            className="btn btn-primary"
             onClick={() => setNumPage(numPage + 1)}
           >
           Soumettre le formulaire

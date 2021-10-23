@@ -65,9 +65,9 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               id="fenConstruction"
               onChange={handleChange}
             >
-              <option value="bois">Bois</option>
-              <option value="vinylePvc">Vinyle / PVC</option>
-              <option value="aluminium">Aluminium</option>
+              <option value="Bois">Bois</option>
+              <option value="Vinyle / PVC">Vinyle / PVC</option>
+              <option value="Aluminium">Aluminium</option>
             </select>
             <label htmlFor="fenConstruction">Fenêtre: Construction</label>
           </div>
@@ -172,9 +172,9 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               id="stationnementCouverture"
               onChange={handleChange}
             >
-              <option value="couvert">Couvert</option>
-              <option value="nonCouvert">Non couvert</option>
-              <option value="garage">Garage</option>
+              <option value="Couvert">Couvert</option>
+              <option value="Non couvert">Non couvert</option>
+              <option value="Garage">Garage</option>
             </select>
             <label htmlFor="stationnementCouverture">Couverture du stationnement: </label>
           </div>

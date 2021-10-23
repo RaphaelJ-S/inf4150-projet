@@ -50,7 +50,7 @@ export default function FicheVisite() {
     numeroCivic: "",
     nomRue: "",
     numeroAppartement: "",
-    codePostale: "",
+    codePostal: "",
     ageImmeuble: 0,
     bruitAmbiant: "",
     egout: "",
