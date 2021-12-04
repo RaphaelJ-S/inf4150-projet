@@ -9,8 +9,8 @@
 <details open="open">
   <summary><h2 style="display: inline-block">Table des Matières</h2></summary>
   <ol>
-    <li><a href="#introduction">Introduction</a></li>
-    <li><a href="#démarage">Démarage</a></li>
+    <li><a href="#introduction-:paperclip:">Introduction</a></li>
+    <li><a href="#démarage-:cd:">Démarage</a></li>
     <li><a href="#premier-pas">Premier Pas</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#coordonnées">Coordonnées</a></li>
