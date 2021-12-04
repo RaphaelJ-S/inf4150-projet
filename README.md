@@ -34,13 +34,13 @@ Si npm n'est pas installé, vous pouvez trouver les instructions pour son instal
 
 Une fois `npm` installé, vous pouvez vous déplacer dans le dossier `inf4150-projet/app`. 
 
-Ce dossier devrait contenir, entre autre, les dossiers 'public' et 'src' ainsi que le fichier 'package.json'.
+Ce dossier devrait contenir, entre autre, les dossiers `public` et `src` ainsi que le fichier `package.json`.
 
 Pour télécharger les dépendances, entrez la commande :
 
 #### `npm install`
 
-Ceci pourrait prendre un certain temps et le dossier 'node_modules' devrait apparaître lorsque les téléchargement seront terminés.
+Ceci pourrait prendre un certain temps et le dossier `node_modules` devrait apparaître lorsque les téléchargement seront terminés.
 
 Pour démarrer le serveur virtuel, vous pouvez maintenant entrer la commande :
 
@@ -50,9 +50,32 @@ Un fureteur devrait afficher le projet.
 
 ## Premier Pas
 
+### Naviguer dans le formulaire
+
 Pour naviguer au travers des pages du formulaire, il suffit de cliquer sur une numéro de page dans la liste de navigation : 
 
 ![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.10.17%20PM.png)
+
+La progression sera indiqué à l'aide de crochet sur les numéros de pages déjà visitées.
+
+### Saisir l'information
+
+La majorité des saisies sont des boites de textes standards, il suffit juste de taper l'information demandée.
+
+Certaines commandes requiert des entrées précédentes avant de pouvoir saisir de l'information : 
+
+
+![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.32.47%20PM.png)
+
+Ou
+
+![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.33.59%20PM.png)
+
+### Envoyer/Enregistrer le formulaire
+
+Pour soumettre ou reprendre le formulaire, il suffit de naviguer à la `12ième` page du formulaire et cliquer sur le bouton `Soumettre le formulaire` :
+
+![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.49.22%20PM.png)
 
 ## FAQ
 
