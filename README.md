@@ -109,4 +109,19 @@ Si toute l'information requise est valide, il suffit de cliquer sur le bouton `S
 
 ## Glossaire :books:
 
+#### Interface
+
+Le logiciel de la fiche de visite. Il contient les différentes pages du formulaire traditionnel.
+
+#### Cases de saisie
+
+Les boîtes de textes,crochets ou sélections que l'utilisateur doit complèter.
+
+#### React
+
+La technologie de programation utilisée pour concevoir le logiciel.
+
+#### Terminal
+
+L'invite de commande du système d'exploitation utilisé.
 
