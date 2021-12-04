@@ -18,11 +18,11 @@
   </ol>
 </details>
 
-## Introduction
+## Introduction :paperclip: 
 
 Cet interface web et mobile remplace la fiche de visite pour vendre une habitation de tout type. 
 
-## Démarage
+## Démarage :cd:
 
 Le projet est réalisé avec React, ce qui implique l'installation de npm localement.
 
@@ -48,7 +48,7 @@ Pour démarrer le serveur virtuel, vous pouvez maintenant entrer la commande :
 
 Un fureteur devrait afficher le projet.
 
-## Premier Pas
+## Premier Pas :mag:
 
 ### Naviguer dans le formulaire
 
@@ -77,9 +77,13 @@ Pour soumettre ou reprendre le formulaire, il suffit de naviguer à la `12ième`
 
 ![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.49.22%20PM.png)
 
-## FAQ
+## FAQ :bulb:
 
-## Coordonnées
+### Je n'arrive pas à démarer l'interface.
+
+Vous référez à la section <a href="#démarage">Démarage</a> du manuel d'utilisation, sinon cliquer sur le lien pour des instructions plus complèxe [ici](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+## Coordonnées :envelope:
 
 ### Membres de l'équipe
 
@@ -87,4 +91,6 @@ Pour soumettre ou reprendre le formulaire, il suffit de naviguer à la `12ième`
 - Yan-Alexandre Leclerc - LECY20069604
 - Zachary Péloquin - PELZ07039904
 
-## Glossaire
+## Glossaire :books:
+
+
