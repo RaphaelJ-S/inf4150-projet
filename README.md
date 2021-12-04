@@ -81,7 +81,23 @@ Pour soumettre ou reprendre le formulaire, il suffit de naviguer à la `12ième`
 
 ### Je n'arrive pas à démarer l'interface.
 
-Vous référez à la section <a href="#démarage">Démarage</a> du manuel d'utilisation, sinon cliquer sur le lien pour des instructions plus complèxe [ici](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+Vous référez à la section Démarage du Manuel d'utilisation, sinon cliquer sur le lien pour des instructions plus complèxe [ici](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+
+### La boîte de texte est désactivée, comment je peux saisir l’information?
+
+Vous devez remplir les cases précédentes, certaines questions sont pré-requises à ces cases. Veuillez vous référer à la section Premier Pas du Manuel d'utilisation pour plus d'information.
+
+### Je ne suis pas capable de progresser dans le formulaire, je reçois des messages d'erreur.
+
+Veuillez vous assurer que toutes les informations saisies ainsi que leur format soient valides dans la page.
+
+### J'ai fait une erreur, comment retourner aux pages précédentes?
+
+Il suffit juste de cliquer sur le numéro de page dans la barre de progression pour retourner à la page désirée.
+
+### Comment soumettre le formulaire une fois complété?
+
+Si toute l'information requise est valide, il suffit de cliquer sur le bouton `Soumettre le formulaire` à la fin du formulaire (12ième page).
 
 ## Coordonnées :envelope:
 
