@@ -1,6 +1,9 @@
-# Fiche de Visite
 
+<p align="center">
+  <img src="https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.16.28%20PM.png" alt="Logo" width="400" height="250">
+</p>
 
+  <h1 align="center">Fiche de Visite</h1>
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -48,6 +51,8 @@ Un fureteur devrait afficher le projet.
 ## Premier Pas
 
 Pour naviguer au travers des pages du formulaire, il suffit de cliquer sur une numéro de page dans la liste de navigation : 
+
+![alt text](https://github.com/RaphaelJ-S/inf4150-projet/blob/main/capture_ecrans/Screen%20Shot%202021-12-04%20at%203.10.17%20PM.png)
 
 ## FAQ
 
