@@ -9,11 +9,17 @@ export default function AdresseFormulaire({ info, setInfo }) {
     const value = event.target.value;
     setInfo({ ...info, [name]: value });
   };
+  const validate = (element) => {
+    console.log(element);
+  };
+  const resetError = (element) => {
+    console.log(element);
+  };
 
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate>
           {/* début numéro civic */}
           <div className="form-floating">
             <input
@@ -26,6 +32,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
               onChange={handleChange}
             />
             <label htmlFor="numeroCivic">Numéro Civic</label>
+            <div className="invalid-feedback">Ce champ doit être rempli</div>
           </div>
           {/* fin numéro civic */}
 
@@ -38,6 +45,8 @@ export default function AdresseFormulaire({ info, setInfo }) {
               name="nomRue"
               value={info.nomRue}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validate}
             />
             <label htmlFor="rue">Nom de rue</label>
           </div>

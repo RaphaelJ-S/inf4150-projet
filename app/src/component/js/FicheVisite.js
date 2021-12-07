@@ -28,6 +28,8 @@ import PageResultat from "./PageResultat";
 export default function FicheVisite() {
   //dictionnaire contenant les informations du formulaire au complet
   const [info, setInfo] = useState({
+    // pour permettre de bloquer en cas d'erreur
+    validated: false,
     // partie identité du formulaire
     adresse: "",
     courtier: "",
@@ -126,14 +128,14 @@ export default function FicheVisite() {
     sousSol: "",
 
     // À proximité
-    proximite: [{id: 0, valeur: "", distance: ""}],
+    proximite: [{ id: 0, valeur: "", distance: "" }],
 
     //Date Occupation
     dateOccupation: "",
-    
+
     //meubles inclus
-    inclus: [{id: 0, valeur: "", description: ""}],
-  
+    inclus: [{ id: 0, valeur: "", description: "" }],
+
     //rangement suffisant
     rezDeChausse: "",
     Cuisine: "",
@@ -141,7 +143,7 @@ export default function FicheVisite() {
     DEtage: "",
     sousSol: "",
   });
-  
+
   //le numéros dans le tableau 'pages' de la page  courante
   const [numPage, setNumPage] = useState(0);
 
@@ -158,45 +160,56 @@ export default function FicheVisite() {
     <SpecInterieurPartie3Formulaire info={info} setInfo={setInfo} />,
     <ServicesFormulaire info={info} setInfo={setInfo} />,
     <OccupationEtInclusFormulaire info={info} setInfo={setInfo} />,
-    <RangementFormulaire info={info} setInfo={setInfo} numPage={numPage} setNumPage={setNumPage}/>,
-    <PageResultat info={info}/>
+    <RangementFormulaire
+      info={info}
+      setInfo={setInfo}
+      numPage={numPage}
+      setNumPage={setNumPage}
+    />,
+    <PageResultat info={info} />,
   ];
 
   return (
     <div className="std-page-container">
-    <div className="fichevisite-main">
-      {/* Le logo du formulaire */}
-      <div className="text-center">
-        <img className="mb-4" src={Logo} alt="logo" width="270" height="150" />{" "}
+      <div className="fichevisite-main">
+        {/* Le logo du formulaire */}
+        <div className="text-center">
+          <img
+            className="mb-4"
+            src={Logo}
+            alt="logo"
+            width="270"
+            height="150"
+          />{" "}
+        </div>
+
+        {/* La section comprenant la page de progression et les outils de navigation du formulaire */}
+        <div className="container-progres">
+          {/* Le bouton de navigation vers la partie précédente du formulaire*/}
+          <button
+            className="btn-precedent"
+            onClick={() => setNumPage(numPage - 1)}
+            disabled={numPage <= 0}
+          >
+            <FontAwesomeIcon icon={faArrowLeft} size="3x"></FontAwesomeIcon>
+          </button>
+
+          {/* La barre de progression du formulaire */}
+          <BarreProgression numPage={numPage} setNumPage={setNumPage} />
+
+          {/* Le bouton de navigation vers la partie suivant du formulaire*/}
+          <button
+            className="btn-suivant"
+            onClick={() => setNumPage(numPage + 1)}
+            disabled={numPage >= pages.length - 2 || !info.validated}
+          >
+            <FontAwesomeIcon icon={faArrowRight} size="3x"></FontAwesomeIcon>
+          </button>
+        </div>
+
+        {/* La page active du formulaire */}
+        {pages[numPage]}
       </div>
-
-      {/* La section comprenant la page de progression et les outils de navigation du formulaire */}
-      <div className="container-progres">
-        {/* Le bouton de navigation vers la partie précédente du formulaire*/}
-        <button
-          className="btn-precedent"
-          onClick={() => setNumPage(numPage - 1)}
-          disabled={numPage <= 0}
-        >
-          <FontAwesomeIcon icon={faArrowLeft} size="3x"></FontAwesomeIcon>
-        </button>
-
-        {/* La barre de progression du formulaire */}
-        <BarreProgression numPage={numPage} setNumPage={setNumPage} />
-
-        {/* Le bouton de navigation vers la partie suivant du formulaire*/}
-        <button
-          className="btn-suivant"
-          onClick={() => setNumPage(numPage + 1)}
-          disabled={numPage >= pages.length - 2 }
-        >
-          <FontAwesomeIcon icon={faArrowRight} size="3x"></FontAwesomeIcon>
-        </button>
-      </div>
-
-      {/* La page active du formulaire */}
-      {pages[numPage]}
-    </div>
     </div>
   );
 }
