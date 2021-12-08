@@ -28,8 +28,10 @@ import PageResultat from "./PageResultat";
 export default function FicheVisite() {
   //dictionnaire contenant les informations du formulaire au complet
   const [info, setInfo] = useState({
-    // pour permettre de bloquer en cas d'erreur
+    // différents champs pour valider chaque formulaire
     validated: false,
+    validatedId: false,
+    validatedHab: false,
     // partie identité du formulaire
     adresse: "",
     courtier: "",

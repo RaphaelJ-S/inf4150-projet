@@ -8,6 +8,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
     backgroundColor: "white",
   };
 
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -15,14 +18,93 @@ export default function HabitationFormulaire({ info, setInfo }) {
   };
 
   useEffect(() => {
+    const erreur = document.querySelector("#error-revenu");
     if (info.proprieteRevenu === "false") {
       setInfo({ ...info, revenuMensuel: "" });
+
+      erreur.classList.remove("show-error");
+    } else {
+      if (!regNbrPositif.test(info.revenuMensuel)) {
+        erreur.classList.add("show-error");
+      }
     }
   }, [info.proprieteRevenu]);
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {
+    if (
+      regNbrPositif.test(info.prixDemande) &&
+      regNbrPositif.test(info.evalMunicipale) &&
+      regNbrPositif.test(info.taxeScolaire) &&
+      regNbrPositif.test(info.taxeMunicipale) &&
+      regTexteNorm.test(info.construction) &&
+      regTexteNorm.test(info.typeHabitation) &&
+      regTexteNorm.test(info.quartier) &&
+      (info.proprieteRevenu ? regNbrPositif.test(info.revenuMensuel) : true)
+    ) {
+      setInfo({ ...info, validatedHab: true, validated: true });
+    } else {
+      setInfo({ ...info, validatedHab: false, validated: false });
+    }
+  };
+  const validateForm = (element) => {
+    let input = element.target.nextSibling;
+    if (element.target.id === "prixDem") {
+      if (!regNbrPositif.test(info.prixDemande)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "eval") {
+      if (!regNbrPositif.test(info.evalMunicipale)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "taxeScol") {
+      if (!regNbrPositif.test(info.taxeScolaire)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "taxeMuni") {
+      if (!regNbrPositif.test(info.taxeMunicipale)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "construct") {
+      if (!regTexteNorm.test(info.construction)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "typeHabitation") {
+      if (!regTexteNorm.test(info.typeHabitation)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "quartier") {
+      if (!regTexteNorm.test(info.quartier)) {
+        input.classList.add("show-error");
+      }
+    } else if (element.target.id === "revenu") {
+      console.log("in");
+      const error_revenu = document.querySelector("#error-revenu");
+      if (info.proprieteRevenu === "true") {
+        console.log(regNbrPositif.test(info.revenuMensuel));
+        if (!regNbrPositif.test(info.revenuMensuel)) {
+          error_revenu.classList.add("show-error");
+        } else {
+          error_revenu.classList.remove("show-error");
+        }
+      } else {
+        console.log("in in");
+        error_revenu.classList.remove("show-error");
+      }
+    }
+
+    validateWholeForm();
+  };
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedHab}>
           {/* début prix demandé */}
           <div className="form-floating">
             <input
@@ -32,9 +114,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
               name="prixDemande"
               value={info.prixDemande}
               autoFocus
+              onFocus={resetError}
+              onBlur={validateForm}
               onChange={handleChange}
             />
-            <label htmlFor="prixDem">Prix Demandé</label>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
+            <label htmlFor="prixDem">Prix Demandé($)</label>
           </div>
           {/* fin prix demandé */}
 
@@ -46,9 +133,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
               id="eval"
               name="evalMunicipale"
               value={info.evalMunicipale}
+              onFocus={resetError}
+              onBlur={validateForm}
               onChange={handleChange}
             />
-            <label htmlFor="eval">Évaluation municipale</label>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
+            <label htmlFor="eval">Évaluation municipale($)</label>
           </div>
           {/* fin évaluation municipale */}
 
@@ -61,8 +153,13 @@ export default function HabitationFormulaire({ info, setInfo }) {
               name="taxeScolaire"
               value={info.taxeSchol}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validateForm}
             />
-            <label htmlFor="taxeScol">Montant de la taxe scolaire</label>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
+            <label htmlFor="taxeScol">Montant de la taxe scolaire($)</label>
           </div>
           {/* fin taxe scolaire */}
 
@@ -75,8 +172,13 @@ export default function HabitationFormulaire({ info, setInfo }) {
               name="taxeMunicipale"
               value={info.taxeMunicipale}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validateForm}
             />
-            <label htmlFor="taxeMuni">Montant de la taxe municipale</label>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
+            <label htmlFor="taxeMuni">Montant de la taxe municipale($)</label>
           </div>
           {/* fin taxe municipale */}
 
@@ -90,6 +192,8 @@ export default function HabitationFormulaire({ info, setInfo }) {
               id="construct"
               value={info.construction}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validateForm}
             >
               <option defaultValue="">
                 Sélectionnez l'état de la construction
@@ -97,6 +201,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
             </select>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="construct">Construction</label>
           </div>
           {/* fin état construction */}
@@ -110,6 +217,8 @@ export default function HabitationFormulaire({ info, setInfo }) {
               id="typeHabitation"
               value={info.typeHabitation}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validateForm}
             >
               <option defaultValue="">Sélectionnez un type d'habitation</option>
               <option value="maisonIndividuelle">Maison individuelle</option>
@@ -122,6 +231,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               <option value="immeuble">Petit immeuble</option>
               <option value="copropriete">Copropriété</option>
             </select>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
           {/* fin type habitation */}
@@ -135,6 +247,8 @@ export default function HabitationFormulaire({ info, setInfo }) {
               id="quartier"
               value={info.quartier}
               onChange={handleChange}
+              onFocus={resetError}
+              onBlur={validateForm}
             >
               <option defaultValue="">
                 Sélectionnez le zonage du quartier
@@ -145,6 +259,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               </option>
               <option value="rural">Rural</option>
             </select>
+            <span id="error-adresse" className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="quartier">Quartier</label>
           </div>
           {/* fin zonage quartier */}
@@ -187,12 +304,17 @@ export default function HabitationFormulaire({ info, setInfo }) {
                 placeholder="Revenu mensuel"
                 disabled={info.proprieteRevenu === "false"}
                 onChange={handleChange}
+                onBlur={validateForm}
               />
+
               <label htmlFor="revenu" className="input-group-text noselect">
                 $/m
               </label>
             </div>
           </div>
+          <span id="error-revenu" className="error-field">
+            Le champ Adresse doit être rempli
+          </span>
           {/* fin propriété revenu */}
         </Form>
       </main>
