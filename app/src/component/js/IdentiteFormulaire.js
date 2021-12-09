@@ -7,6 +7,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
   const regTelephone = /^\d{10}$/;
   const regTexteNorm = /^\D+$/;
   const regCourriel = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  const regPasVide = /^.+$/;
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -16,7 +17,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
 
   const validateWholeForm = () => {
     if (
-      regTexteNorm.test(info.adresse) &&
+      regPasVide.test(info.adresse) &&
       regTexteNorm.test(info.courtier) &&
       regTelephone.test(info.telephone) &&
       regTelephone.test(info.cellulaire) &&
@@ -31,7 +32,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
   const validateForm = (element) => {
     let input = element.target.nextSibling;
     if (element.target.id === "floatingAdresse") {
-      if (!regTexteNorm.test(info.adresse)) {
+      if (!regPasVide.test(info.adresse)) {
         input.classList.add("show-error");
       }
     } else if (element.target.id === "floatingCourtier") {

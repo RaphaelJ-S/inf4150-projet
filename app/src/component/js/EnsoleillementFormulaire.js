@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function EnsoleillementFormulaire({ info, setInfo }) {
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {};
+
+  const validateForm = (element) => {
+    const elem_id = element.target.id;
+    const error_text = element.target.nextSibling;
+    switch (elem_id) {
+    }
+    validateWholeForm();
+  };
+
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -18,7 +40,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedSoleil}>
           {/** début ensoleillement intérieur AM */}
 
           <div className="form-floating">
@@ -31,6 +53,9 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               onChange={handleChange}
               autofocus
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="interieurAMsoleil">Pièce ensoleillées : AM</label>
           </div>
 
@@ -48,6 +73,9 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               value={info.interieurPMsoleil}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="interieurPMsoleil">Pièce ensoleillées : PM</label>
           </div>
           {/** fin ensoleillement intérieur PM */}
@@ -96,6 +124,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin ensoleillement extérieur devant*/}
 
           {/* début ensoleillement extérieur arrière */}
@@ -142,6 +171,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin ensoleillement extérieur arrière*/}
         </Form>
       </main>

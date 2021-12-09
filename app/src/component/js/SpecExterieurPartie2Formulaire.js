@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {};
+
+  const validateForm = (element) => {
+    const elem_id = element.target.id;
+    const error_text = element.target.nextSibling;
+    switch (elem_id) {
+    }
+    validateWholeForm();
+  };
+
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -19,7 +41,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedSpecEx2}>
           {/* début taille terrain */}
           <div className="proRev">
             <div className="label-texte taille-terrain">
@@ -62,6 +84,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin taille terrain */}
 
           {/* début aménagements extérieurs */}
@@ -176,6 +199,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin aménagements extérieurs */}
 
           {/* début type piscine */}
@@ -194,6 +218,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="semi-creuse">Semi-creusée</option>
               <option value="de surface">De surface</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="amenagementTerrain">Piscine </label>
           </div>
           {/* fin type piscine */}
@@ -216,6 +243,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="electrique">Électrique</option>
               <option value="gazNaturel">Gaz naturel</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="amenagementTerrain">Chauffe-piscine </label>
           </div>
           {/* fin type chauffe-piscine */}
@@ -236,6 +266,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="nonCouvert">Non-couvert</option>
               <option value="garage">Garage</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="typeStationnement">Type de stationnement </label>
           </div>
           {/* fin type stationnement */}
@@ -260,6 +293,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="1">1 voiture</option>
               <option value="2">2 voitures</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nombreStationnement">
               Nombre de place de stationnement{" "}
             </label>
@@ -283,6 +319,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="gravier">Gravier</option>
               <option value="terre">Terre</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="entree">Type d'entrée </label>
           </div>
           {/* fin entrée */}

@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {};
+
+  const validateForm = (element) => {
+    const elem_id = element.target.id;
+    const error_text = element.target.nextSibling;
+    switch (elem_id) {
+    }
+    validateWholeForm();
+  };
+
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -13,7 +35,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedSpecInt1}>
           {/* début superficie habitable */}
           <div className="proRev">
             <div className="label-texte taille-terrain">
@@ -41,18 +63,22 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin taille terrain */}
 
           {/** début indice isolation sous-sol */}
           <div className="form-floating">
             <input
-              type="texte"
+              type="text"
               className="form-control"
               id="isolationSousSol"
               name="isolationSousSol"
               value={info.isolationSousSol}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="isolationSousSol">
               Indice d'isolation : sous-sol
             </label>
@@ -62,13 +88,16 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/** début indice isolation murs */}
           <div className="form-floating">
             <input
-              type="texte"
+              type="text"
               className="form-control"
               id="isolationMurs"
               name="isolationMurs"
               value={info.isolationMurs}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="isolationMurs">Indice d'isolation : murs</label>
           </div>
           {/** fin indice isolation murs */}
@@ -76,13 +105,16 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/** début indice isolation plafonds */}
           <div className="form-floating">
             <input
-              type="texte"
+              type="text"
               className="form-control"
               id="isolationPlafonds"
               name="isolationPlafonds"
               value={info.isolationPlafonds}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="isolationPlafonds">
               Indice d'isolation : Plafonds
             </label>
@@ -104,6 +136,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="loue">Loué</option>
               <option value="achete">Acheté</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="chauffeEau">Chauffe-eau </label>
           </div>
           {/* fin chauffe-eau */}
@@ -124,6 +159,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="electricite">Électricité</option>
               <option value="mazout">Mazout</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="typeChauffeEau">Type du chauffe-eau</label>
           </div>
           {/* fin type chauffe-eau */}
@@ -167,6 +205,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               />
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin système électrique */}
 
           {/* début chauffage */}
@@ -186,6 +225,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="bois">Bois</option>
               <option value="granules">Granules</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="chauffage">Type de chauffage </label>
           </div>
           {/* fin chauffage */}
@@ -204,6 +246,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="louee">Louée</option>
               <option value="achetee">Achetée</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="fournaise">Fournaise </label>
           </div>
           {/* fin fournaise */}

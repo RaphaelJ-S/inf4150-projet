@@ -10,6 +10,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
 
   const regNbrPositif = /^\d+$/;
   const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -81,17 +82,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
         input.classList.add("show-error");
       }
     } else if (element.target.id === "revenu") {
-      console.log("in");
       const error_revenu = document.querySelector("#error-revenu");
       if (info.proprieteRevenu === "true") {
-        console.log(regNbrPositif.test(info.revenuMensuel));
         if (!regNbrPositif.test(info.revenuMensuel)) {
           error_revenu.classList.add("show-error");
         } else {
           error_revenu.classList.remove("show-error");
         }
       } else {
-        console.log("in in");
         error_revenu.classList.remove("show-error");
       }
     }
@@ -119,7 +117,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onChange={handleChange}
             />
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Seul un nombre positif est accepté pour le prix demandé
             </span>
             <label htmlFor="prixDem">Prix Demandé($)</label>
           </div>
@@ -138,7 +136,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onChange={handleChange}
             />
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Seul un nombre positif est accepté pour l'évaluation municipale
             </span>
             <label htmlFor="eval">Évaluation municipale($)</label>
           </div>
@@ -157,7 +155,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onBlur={validateForm}
             />
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Seul un nombre positif est accepté pour la taxe scolaire
             </span>
             <label htmlFor="taxeScol">Montant de la taxe scolaire($)</label>
           </div>
@@ -176,7 +174,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onBlur={validateForm}
             />
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Seul un nombre positif est accepté pour la taxe municipale
             </span>
             <label htmlFor="taxeMuni">Montant de la taxe municipale($)</label>
           </div>
@@ -195,14 +193,12 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onFocus={resetError}
               onBlur={validateForm}
             >
-              <option defaultValue="">
-                Sélectionnez l'état de la construction
-              </option>
+              <option value="">Sélectionnez l'état de la construction</option>
               <option value="existante">Existante</option>
               <option value="neuve">Neuve</option>
             </select>
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Vous devez faire une sélection
             </span>
             <label htmlFor="construct">Construction</label>
           </div>
@@ -220,7 +216,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onFocus={resetError}
               onBlur={validateForm}
             >
-              <option defaultValue="">Sélectionnez un type d'habitation</option>
+              <option value="">Sélectionnez un type d'habitation</option>
               <option value="maisonIndividuelle">Maison individuelle</option>
               <option value="duplex">Duplex</option>
               <option value="tourHabitation">Tour d'habitation</option>
@@ -232,7 +228,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
               <option value="copropriete">Copropriété</option>
             </select>
             <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
+              Vous devez faire une sélection
             </span>
             <label htmlFor="typeHabitation">Type d'habitation</label>
           </div>
@@ -250,18 +246,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onFocus={resetError}
               onBlur={validateForm}
             >
-              <option defaultValue="">
-                Sélectionnez le zonage du quartier
-              </option>
+              <option value="">Sélectionnez le zonage du quartier</option>
               <option value="residentiel">Résidentiel</option>
               <option value="commerce-industriel">
                 Commercial ou industriel
               </option>
               <option value="rural">Rural</option>
             </select>
-            <span id="error-adresse" className="error-field">
-              Le champ Adresse doit être rempli
-            </span>
+            <span className="error-field">Vous devez faire une sélection</span>
             <label htmlFor="quartier">Quartier</label>
           </div>
           {/* fin zonage quartier */}
@@ -313,7 +305,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
             </div>
           </div>
           <span id="error-revenu" className="error-field">
-            Le champ Adresse doit être rempli
+            Le revenu par mois doit être des chiffres positifs
           </span>
           {/* fin propriété revenu */}
         </Form>

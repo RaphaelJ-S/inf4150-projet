@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {};
+
+  const validateForm = (element) => {
+    const elem_id = element.target.id;
+    const error_text = element.target.nextSibling;
+    switch (elem_id) {
+    }
+    validateWholeForm();
+  };
+
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -18,7 +40,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedSpecInt3}>
           {/* début nombre de salles d'eau : toilette */}
           <div className="form-floating">
             <input
@@ -29,6 +51,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.nbrSalleEauToilette}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nbrSalleEauToilette">
               Salle de toilette(toilette + lavabo)
             </label>
@@ -45,6 +70,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.nbrSalleEauBain}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nbrSalleEauBain">
               Salle de bains(toilette + baignoire ou douche)
             </label>
@@ -66,6 +94,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="independante">Indépendante</option>
               <option value="jumelee">Jumelée à la salle de toilette</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="climatisation">Type de laverie </label>
           </div>
           {/* fin laverie */}
@@ -86,6 +117,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="jumeleeCuisine">Jumelée à la cuisine</option>
               <option value="jumeleeSalon">Jumelée au salon</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="salleManger">Salle à manger</label>
           </div>
           {/* fin salle à manger */}
@@ -105,6 +139,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="jumeleeCuisine">Jumelé à la cuisine</option>
               <option value="jumeleeSalon">Jumelé à la salle à manger</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="salon">Salon</label>
           </div>
           {/* fin salon */}
@@ -124,6 +161,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="bois">Bois</option>
               <option value="gaz">Gaz</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="foyer">Foyer</label>
           </div>
           {/* fin foyer */}
@@ -143,6 +183,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="bois">Bois</option>
               <option value="granules">Granules</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="poele">Poêle</label>
           </div>
           {/* fin poele */}
@@ -163,6 +206,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="oui">Oui</option>
               <option value="non">Non</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="espaceBureau">Espace de bureau</label>
           </div>
           {/* fin espace bureau */}
@@ -176,15 +222,18 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.sousSol}
               onChange={handleChange}
             >
-              <option value="">
-                Sélectionnez l'état du sous-sol
-              </option>
+              <option value="">Sélectionnez l'état du sous-sol</option>
               <option value="Fini">Fini</option>
               <option value="Non fini">Non fini</option>
-              <option value="Salle de jeu (enfants)">Salle de jeu (enfants)</option>
+              <option value="Salle de jeu (enfants)">
+                Salle de jeu (enfants)
+              </option>
               <option value="Salle familiale">Salle familiale</option>
               <option value="Rangement">Rangement</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="sousSol">État du sous-sol</label>
           </div>
         </Form>

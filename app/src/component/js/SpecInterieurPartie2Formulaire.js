@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
+  const regNbrPositif = /^\d+$/;
+  const regTexteNorm = /^\D+$/;
+  const regPasVide = /^.+$/;
+
+  useEffect(() => {
+    validateWholeForm();
+  }, []);
+
+  const validateWholeForm = () => {};
+
+  const validateForm = (element) => {
+    const elem_id = element.target.id;
+    const error_text = element.target.nextSibling;
+    switch (elem_id) {
+    }
+    validateWholeForm();
+  };
+
+  const resetError = (element) => {
+    element.target.nextSibling.classList.remove("show-error");
+  };
+
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -18,7 +40,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form>
+        <Form noValidate validated={info.validatedSpecInt2}>
           {/* début ventilateur-récupérateur */}
           <div className="form-floating">
             <select
@@ -35,6 +57,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="non">Non</option>
               <option value="oui">Oui</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="recuperateur">
               Ventilateur-récupérateur de chaleur{" "}
             </label>
@@ -57,6 +82,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="systemeCentral">Système central</option>
               <option value="fenetre">Fenêtre</option>
             </select>
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="climatisation">Type de climatisation </label>
           </div>
           {/* fin type climatisation */}
@@ -111,6 +139,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin type sécurite feu*/}
 
           {/* début nombre de pièces */}
@@ -123,6 +152,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.nbrPieces}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nbrPieces">Nombre de pièces</label>
           </div>
           {/* fin nombre de pièces */}
@@ -137,6 +169,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.nbrChambreRDC}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nbrChambreRDC">
               Nombre de chambres à coucher : Rez-de-chaussée
             </label>
@@ -153,6 +188,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.nbrChambreEtage}
               onChange={handleChange}
             />
+            <span className="error-field">
+              Le champ Adresse doit être rempli
+            </span>
             <label htmlFor="nbrChambreEtage">
               Nombre de chambres à coucher : Étage
             </label>
@@ -231,6 +269,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
+          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin salle de bain dans salle coucher principale */}
         </Form>
       </main>

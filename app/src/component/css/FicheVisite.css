@@ -43,7 +43,7 @@ section {
   background-color: #384459;
   flex: 0 0;
   /*bottom: 0;*/
-  width:100%;
+  width: 100%;
   align-items: center;
 }
 
@@ -91,7 +91,7 @@ form {
   width: 80%;
 }
 
-.form-floating { 
+.form-floating {
   margin: 10px 0 10px 0;
 }
 
@@ -156,7 +156,6 @@ form {
 .proRev {
   border: #d8d7d7 solid 0.1px;
   border-radius: 5px;
-  margin-bottom: 1rem;
 }
 
 .proRev .form-check-input {
