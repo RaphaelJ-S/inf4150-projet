@@ -90,13 +90,20 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
   };
   const validateChauffePiscine = (updtMsg) => {
     let input = document.querySelector("#chauffePiscine");
+    let inputOut = document.querySelector("#piscine");
     let err = document.querySelector("#chauffePiscine-error");
-    if (regPasVide.test(input.value)) {
-      if (updtMsg) err.classList.remove("show-error");
-      return true;
+    if (inputOut.value !== "aucune") {
+      if (regPasVide.test(input.value)) {
+        if (updtMsg) err.classList.remove("show-error");
+        return true;
+      } else {
+        if (updtMsg) err.classList.add("show-error");
+        return false;
+      }
     } else {
-      if (updtMsg) err.classList.add("show-error");
-      return false;
+      input.value = "";
+      err.classList.remove("show-error");
+      return true;
     }
   };
 
@@ -114,13 +121,20 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
 
   const validateNombreStationnement = (updtMsg) => {
     let input = document.querySelector("#nombreStationnement");
+    let inputOut = document.querySelector("#typeStationnement");
     let err = document.querySelector("#nombreStationnement-error");
-    if (regPasVide.test(input.value)) {
-      if (updtMsg) err.classList.remove("show-error");
-      return true;
+    if (inputOut !== "aucun") {
+      if (regPasVide.test(input.value)) {
+        if (updtMsg) err.classList.remove("show-error");
+        return true;
+      } else {
+        if (updtMsg) err.classList.add("show-error");
+        return false;
+      }
     } else {
-      if (updtMsg) err.classList.add("show-error");
-      return false;
+      input.value = "";
+      err.classList.remove("show-error");
+      return true;
     }
   };
 
