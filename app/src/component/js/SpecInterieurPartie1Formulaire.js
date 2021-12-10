@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
@@ -221,7 +222,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* fin taille terrain */}
 
           {/** début indice isolation sous-sol */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='isolationSS'>
             <input
               type="text"
               className="form-control"
@@ -237,11 +238,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="isolationSousSol">
               Indice d'isolation : sous-sol
             </label>
+            <ReactTooltip id='isolationSS' type='error'>
+              <span>Indice d'isolation du sous-sol</span>
+            </ReactTooltip>
           </div>
           {/** fin indice isolation murs */}
 
           {/** début indice isolation murs */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='isolationMur'>
             <input
               type="text"
               className="form-control"
@@ -255,11 +259,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="isolationMurs">Indice d'isolation : murs</label>
+            <ReactTooltip id='isolationMur' type='error'>
+              <span>Indice d'isolation des murs de la résidence</span>
+            </ReactTooltip>
           </div>
           {/** fin indice isolation murs */}
 
           {/** début indice isolation plafonds */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='isolationPlafond'>
             <input
               type="text"
               className="form-control"
@@ -275,6 +282,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="isolationPlafonds">
               Indice d'isolation : Plafonds
             </label>
+            <ReactTooltip id='isolationPlafond' type='error'>
+              <span>Indice d'isolation du plafond de la résidence</span>
+            </ReactTooltip>
           </div>
           {/** fin indice isolation plafonds */}
           <p className="mt-3"></p>

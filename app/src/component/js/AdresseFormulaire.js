@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function AdresseFormulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
@@ -104,7 +105,7 @@ export default function AdresseFormulaire({ info, setInfo }) {
       <main className="form-signin">
         <Form noValidate validated={info.validatedAdd}>
           {/* début numéro civic */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='numCivic'>
             <input
               type="text"
               className="form-control"
@@ -118,11 +119,14 @@ export default function AdresseFormulaire({ info, setInfo }) {
             />
             <span className="error-field">Ce champ doit être rempli</span>
             <label htmlFor="numeroCivic">Numéro Civic</label>
+            <ReactTooltip id='numCivic' type='error'>
+              <span>Le numéro civic de la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin numéro civic */}
 
           {/* début nom de rue */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nomRue'>
             <input
               type="text"
               className="form-control"
@@ -135,11 +139,14 @@ export default function AdresseFormulaire({ info, setInfo }) {
             />
             <span className="error-field">Ce champ doit être rempli</span>
             <label htmlFor="rue">Nom de rue</label>
+            <ReactTooltip id='nomRue' type='error'>
+              <span>Le nom de la rue de la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin nom de rue */}
 
           {/* début numéro appartement */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='numeroApt'>
             <input
               type="number"
               className="form-control"
@@ -153,12 +160,16 @@ export default function AdresseFormulaire({ info, setInfo }) {
             <span className="error-field">
               Ce champ doit contenir un nombre positif
             </span>
-            <label htmlFor="numeroAppartement">Numero d'appartement</label>
+            
+            <label htmlFor="numeroAppartement" >Numero d'appartement</label>
+            <ReactTooltip id='numeroApt' type='error'>
+              <span>Seulement si applicable</span>
+            </ReactTooltip>
           </div>
           {/* fin numéro appartement */}
 
           {/* début code postal */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='numeroPostal'>
             <input
               type="text"
               className="form-control"
@@ -173,6 +184,9 @@ export default function AdresseFormulaire({ info, setInfo }) {
               Ce champ doit contenir un code postal valide ex: H2i2f8
             </span>
             <label htmlFor="rue">Code postal</label>
+            <ReactTooltip id='numeroPostal' type='error'>
+              <span>Le code postal de la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin code postal */}
 

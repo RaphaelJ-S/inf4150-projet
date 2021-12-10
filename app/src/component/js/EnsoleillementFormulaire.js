@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function EnsoleillementFormulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
@@ -27,7 +28,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
         <Form noValidate validated={true}>
           {/** début ensoleillement intérieur AM */}
 
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='ensoleillementAM'>
             <input
               type="texte"
               className="form-control"
@@ -41,6 +42,9 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="interieurAMsoleil">Pièce ensoleillées : AM</label>
+            <ReactTooltip id='ensoleillementAM' type='error'>
+              <span>Le nombre de pièce ensoleillées en AM</span>
+              </ReactTooltip>
           </div>
 
           {/** fin ensoleillement intérieur AM */}
@@ -48,7 +52,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
           {/**  */}
           {/** début ensoleillement intérieur PM */}
 
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='ensoleillementPM'>
             <input
               type="texte"
               className="form-control"
@@ -61,6 +65,9 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="interieurPMsoleil">Pièce ensoleillées : PM</label>
+            <ReactTooltip id='ensoleillementPM' type='error'>
+              <span>Le nombre de pièce ensoleillées en PM</span>
+              </ReactTooltip>
           </div>
           {/** fin ensoleillement intérieur PM */}
 
