@@ -2,6 +2,7 @@ import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form, InputGroup } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function IdentiteFormulaire({ info, setInfo }) {
   const regTelephone = /^\d{10}$/;
@@ -64,7 +65,7 @@ export default function IdentiteFormulaire({ info, setInfo }) {
         <main className="form-signin">
           <Form noValidate validated={info.validatedId}>
             {/* début adresse */}
-            <div className="form-floating">
+            <div className="form-floating" data-tip data-for='adresse'>
               <input
                 type="text"
                 className="form-control"
@@ -80,11 +81,14 @@ export default function IdentiteFormulaire({ info, setInfo }) {
                 Le champ Adresse doit être rempli
               </span>
               <label htmlFor="floatingAdresse">Adresse</label>
+              <ReactTooltip id='adresse' type='error'>
+              <span>L'adresse de la résidence</span>
+              </ReactTooltip>
             </div>
             {/* fin adresse */}
 
             {/* début courtier */}
-            <div className="form-floating">
+            <div className="form-floating" data-tip data-for='courtier'>
               <input
                 type="text"
                 className="form-control"
@@ -100,11 +104,14 @@ export default function IdentiteFormulaire({ info, setInfo }) {
               </span>
 
               <label htmlFor="floatingCourtier">Courtier/Vendeur</label>
+              <ReactTooltip id='courtier' type='error'>
+              <span>Le nom du courtier</span>
+              </ReactTooltip>
             </div>
             {/* fin courtier */}
 
             {/* début téléphone */}
-            <div className="form-floating">
+            <div className="form-floating" data-tip data-for='telephone'>
               <input
                 type="text"
                 className="form-control"
@@ -119,11 +126,14 @@ export default function IdentiteFormulaire({ info, setInfo }) {
                 Doit être 10 chiffres positifs de suite
               </span>
               <label htmlFor="floatingPhone">Téléphone</label>
+              <ReactTooltip id='telephone' type='error'>
+              <span>Votre numéro de téléphone</span>
+              </ReactTooltip>
             </div>
             {/* fin téléphone */}
 
             {/* début cellulaire */}
-            <div className="form-floating">
+            <div className="form-floating" data-tip data-for='cellulaire'>
               <input
                 type="text"
                 className="form-control"
@@ -138,11 +148,14 @@ export default function IdentiteFormulaire({ info, setInfo }) {
                 Doit être 10 chiffres positifs de suite
               </span>
               <label htmlFor="floatingCell">Cellulaire</label>
+              <ReactTooltip id='cellulaire' type='error'>
+              <span>Votre numéro de cellulaire</span>
+              </ReactTooltip>
             </div>
             {/* fin cellulaire */}
 
             {/* début email */}
-            <div className="form-floating">
+            <div className="form-floating" data-tip data-for='email'>
               <input
                 type="email"
                 className="form-control"
@@ -157,6 +170,9 @@ export default function IdentiteFormulaire({ info, setInfo }) {
                 Doit être un format d'adresse valide ex:test@courrier.com
               </span>
               <label htmlFor="floatingEmail">Courriel</label>
+              <ReactTooltip id='email' type='error'>
+              <span>Votre adresse courriel</span>
+              </ReactTooltip>
             </div>
             {/* fin email */}
           </Form>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
@@ -143,7 +144,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* fin type sécurite feu*/}
 
           {/* début nombre de pièces */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbPiece'>
             <input
               type="number"
               className="form-control"
@@ -156,11 +157,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="nbrPieces">Nombre de pièces</label>
+            <ReactTooltip id='nbPiece' type='error'>
+              <span>Le nombre de pièce dans la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre de pièces */}
 
           {/* début nombre chambres à coucher rez-de-chaussée */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbChambreRDC'>
             <input
               type="number"
               className="form-control"
@@ -175,11 +179,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="nbrChambreRDC">
               Nombre de chambres à coucher : Rez-de-chaussée
             </label>
+            <ReactTooltip id='nbChambreRDC' type='error'>
+              <span>Le nombre de chambre à coucher au rez-de-chaussée</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre chambres à coucher rez-de-chaussée */}
 
           {/* début nombre chambres à coucher Etage */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbChambreEt'>
             <input
               type="number"
               className="form-control"
@@ -194,11 +201,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="nbrChambreEtage">
               Nombre de chambres à coucher : Étage
             </label>
+            <ReactTooltip id='nbChambreEt' type='error'>
+              <span>Le nombre de chambre à coucher à l'étage</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre chambres à coucher Etage */}
 
           {/* début nombre chambres à coucher sous-sol */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbChambreSS'>
             <input
               type="number"
               className="form-control"
@@ -210,6 +220,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="nbrChambreSS">
               Nombre de chambre à coucher : Sous-sol
             </label>
+            <ReactTooltip id='nbChambreSS' type='error'>
+              <span>Le nombre de chambre à coucher au sous-sol</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre chambres à coucher sous-sol */}
           <p className="mt-3"></p>

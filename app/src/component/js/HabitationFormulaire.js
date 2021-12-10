@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function HabitationFormulaire({ info, setInfo }) {
   const btnStyle = {
@@ -104,7 +105,7 @@ export default function HabitationFormulaire({ info, setInfo }) {
       <main className="form-signin">
         <Form noValidate validated={info.validatedHab}>
           {/* début prix demandé */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='prixDemander'>
             <input
               type="text"
               className="form-control"
@@ -120,11 +121,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
               Seul un nombre positif est accepté pour le prix demandé
             </span>
             <label htmlFor="prixDem">Prix Demandé($)</label>
+            <ReactTooltip id='prixDemander' type='error'>
+              <span>Le prix demandé pour la résidence</span>
+              </ReactTooltip>
           </div>
           {/* fin prix demandé */}
 
           {/* début évaluation municipale */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='evalMuni'>
             <input
               type="text"
               className="form-control"
@@ -135,15 +139,18 @@ export default function HabitationFormulaire({ info, setInfo }) {
               onBlur={validateForm}
               onChange={handleChange}
             />
-            <span id="error-adresse" className="error-field">
+            <span id="error-adresse" className="error-field" >
               Seul un nombre positif est accepté pour l'évaluation municipale
             </span>
             <label htmlFor="eval">Évaluation municipale($)</label>
+            <ReactTooltip id='evalMuni' type='error'>
+              <span>La valeur de l'évaluation municipale</span>
+              </ReactTooltip>
           </div>
           {/* fin évaluation municipale */}
 
           {/* début taxe scolaire */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='taxeScolaire'>
             <input
               type="text"
               className="form-control"
@@ -158,11 +165,14 @@ export default function HabitationFormulaire({ info, setInfo }) {
               Seul un nombre positif est accepté pour la taxe scolaire
             </span>
             <label htmlFor="taxeScol">Montant de la taxe scolaire($)</label>
+            <ReactTooltip id='taxeScolaire' type='error'>
+              <span>Le montant de la taxe scolaire</span>
+              </ReactTooltip>
           </div>
           {/* fin taxe scolaire */}
 
           {/* début taxe municipale */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='taxeMuni'>
             <input
               type="text"
               className="form-control"
@@ -177,6 +187,9 @@ export default function HabitationFormulaire({ info, setInfo }) {
               Seul un nombre positif est accepté pour la taxe municipale
             </span>
             <label htmlFor="taxeMuni">Montant de la taxe municipale($)</label>
+            <ReactTooltip id='taxeMuni' type='error'>
+              <span>Le montant de la taxe municipale</span>
+              </ReactTooltip>
           </div>
           {/* fin taxe municipale */}
 

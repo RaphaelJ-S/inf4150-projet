@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
+import ReactTooltip from 'react-tooltip';
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
@@ -42,7 +43,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
       <main className="form-signin">
         <Form noValidate validated={info.validatedSpecInt3}>
           {/* début nombre de salles d'eau : toilette */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbToilette'>
             <input
               type="number"
               className="form-control"
@@ -57,11 +58,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="nbrSalleEauToilette">
               Salle de toilette(toilette + lavabo)
             </label>
+            <ReactTooltip id='nbToilette' type='error'>
+              <span>Le nombre salle de bain avec toilette dans la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre de salles d'eau : toilette */}
 
           {/* début nombre de salles d'eau : bains */}
-          <div className="form-floating">
+          <div className="form-floating" data-tip data-for='nbBain'>
             <input
               type="number"
               className="form-control"
@@ -76,6 +80,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
             <label htmlFor="nbrSalleEauBain">
               Salle de bains(toilette + baignoire ou douche)
             </label>
+            <ReactTooltip id='nbBain' type='error'>
+              <span>Le nombre salle de bain avec bain dans la résidence</span>
+            </ReactTooltip>
           </div>
           {/* fin nombre de salles d'eau : bains */}
 
