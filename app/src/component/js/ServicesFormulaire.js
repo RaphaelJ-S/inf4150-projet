@@ -4,28 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 
 export default function ServicesFormulaire({ info, setInfo }) {
-  const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
-  const regPasVide = /^.+$/;
-
   useEffect(() => {
-    validateWholeForm();
+    setInfo({ ...info, validated: true });
   }, []);
-
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
-    }
-    validateWholeForm();
-  };
-
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
-  };
-
   const handleChange = (e) => {
     console.log(info.proximite);
     let uptItems = [...info.proximite];
@@ -59,7 +40,7 @@ export default function ServicesFormulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form noValidate validated={info.validatedService}>
+        <Form noValidate validated={true}>
           {/* début Autres infos - Proximité */}
           {/* début chauffe-eau */}
           {info.proximite.map((elem) => {

@@ -1,35 +1,186 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
   const regPasVide = /^.+$/;
+  const regVideNbrPositif = /^\d*$/;
+  const regVide = /^.*$/;
 
-  useEffect(() => {
-    validateWholeForm();
-  }, []);
-
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
+  const validateWholeForm = () => {
+    let valid = [
+      validateSuperficieHab(false),
+      validateIsolationSousSol(false),
+      validateIsolationMurs(false),
+      validateIsolationPlafonds(false),
+      validateChauffeEau(false),
+      validateTypeChauffeEau(false),
+      validateSysElectrique(false),
+      validateChauffage(false),
+      validateFournaise(false),
+    ].every(Boolean);
+    if (valid) {
+      setInfo({ ...info, validated: true, validatedSpecInt1: true });
+    } else {
+      setInfo({ ...info, validated: false, validatedSpecInt1: false });
     }
-    validateWholeForm();
   };
 
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
+  const validateInput = (element) => {
+    const elem_id = element.target.id;
+    switch (elem_id) {
+      case "superficieHab":
+        validateSuperficieHab(true);
+        break;
+      case "isolationSousSol":
+        validateIsolationSousSol(true);
+        break;
+      case "isolationMurs":
+        validateIsolationMurs(true);
+        break;
+      case "isolationPlafonds":
+        validateIsolationPlafonds(true);
+        break;
+      case "chauffeEau":
+        validateChauffeEau(true);
+        break;
+      case "typeChauffeEau":
+        validateTypeChauffeEau(true);
+        break;
+      case "sysElectriqueAutre":
+        validateSysElectrique(true);
+        break;
+      case "sysElectrique":
+        validateSysElectrique(true);
+        break;
+      case "chauffage":
+        validateChauffage(true);
+        break;
+      case "fournaise":
+        validateFournaise(true);
+        break;
+    }
+    validateWholeForm();
   };
 
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInfo({ ...info, [name]: value });
+  };
+
+  const validateSuperficieHab = (updtMsg) => {
+    let input = document.querySelector("#superficieHab");
+    let err = document.querySelector("#superficieHab-error");
+    if (regNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateIsolationSousSol = (updtMsg) => {
+    let input = document.querySelector("#isolationSousSol");
+    let err = document.querySelector("#isolationSousSol-error");
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateIsolationMurs = (updtMsg) => {
+    let input = document.querySelector("#isolationMurs");
+    let err = document.querySelector("#isolationMurs-error");
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateIsolationPlafonds = (updtMsg) => {
+    let input = document.querySelector("#isolationPlafonds");
+    let err = document.querySelector("#isolationPlafonds-error");
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateChauffeEau = (updtMsg) => {
+    let input = document.querySelector("#chauffeEau");
+    let err = document.querySelector("#chauffeEau-error");
+    if (regVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateTypeChauffeEau = (updtMsg) => {
+    let input = document.querySelector("#typeChauffeEau");
+    let err = document.querySelector("#typeChauffeEau-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateSysElectrique = (updtMsg) => {
+    let input = document.querySelector("#sysElectrique");
+    let err = document.querySelector("#sysElectrique-error");
+    let inputIn = document.querySelector("#sysElectriqueAutre");
+    if (regPasVide.test(input.value)) {
+      if (input.value === "autre") {
+        if (regPasVide.test(inputIn.value)) {
+          if (updtMsg) err.classList.remove("show-error");
+          return true;
+        } else {
+          if (updtMsg) err.classList.add("show-error");
+          return false;
+        }
+      }
+
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateChauffage = (updtMsg) => {
+    let input = document.querySelector("#chauffage");
+    let err = document.querySelector("#chauffage-error");
+    if (regVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateFournaise = (updtMsg) => {
+    let input = document.querySelector("#fournaise");
+    let err = document.querySelector("#fournaise-error");
+    if (regVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
   };
 
   return (
@@ -53,6 +204,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
                 value={info.superficieHab}
                 placeholder="Entrez la superficie habitable en mètre carré"
                 onChange={handleChange}
+                onBlur={validateInput}
                 autofocus
               />
               <label
@@ -63,7 +215,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
-          <span className="error-field">Le champ Adresse doit être rempli</span>
+          <span id="superficieHab-error" className="error-field">
+            Le champ Adresse doit être rempli
+          </span>
           {/* fin taille terrain */}
 
           {/** début indice isolation sous-sol */}
@@ -75,8 +229,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               name="isolationSousSol"
               value={info.isolationSousSol}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
+            <span id="isolationSousSol-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="isolationSousSol">
@@ -94,8 +249,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               name="isolationMurs"
               value={info.isolationMurs}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
+            <span id="isolationMurs-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="isolationMurs">Indice d'isolation : murs</label>
@@ -111,8 +267,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               name="isolationPlafonds"
               value={info.isolationPlafonds}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
+            <span id="isolationPlafonds-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="isolationPlafonds">
@@ -131,12 +288,13 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="chauffeEau"
               value={info.chauffeEau}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le chauffe-eau</option>
               <option value="loue">Loué</option>
               <option value="achete">Acheté</option>
             </select>
-            <span className="error-field">
+            <span id="chauffeEau-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="chauffeEau">Chauffe-eau </label>
@@ -153,13 +311,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.typeChauffeEau}
               disabled={info.chauffeEau === ""}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type du chauffe-eau</option>
               <option value="gaz">Gaz</option>
               <option value="electricite">Électricité</option>
               <option value="mazout">Mazout</option>
             </select>
-            <span className="error-field">
+            <span id="typeChauffeEau-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="typeChauffeEau">Type du chauffe-eau</label>
@@ -181,6 +340,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.sysElectrique}
               aria-label="Selection du système électrique"
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">
                 Sélectionnez le type de système électrique
@@ -202,10 +362,13 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
                 placeholder="Entrez le type de système électrique autre"
                 disabled={info.sysElectrique !== "autre"}
                 onChange={handleChange}
+                onBlur={validateInput}
               />
             </div>
           </div>
-          <span className="error-field">Le champ Adresse doit être rempli</span>
+          <span id="sysElectrique-error" className="error-field">
+            Le champ Adresse doit être rempli
+          </span>
           {/* fin système électrique */}
 
           {/* début chauffage */}
@@ -217,6 +380,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="chauffage"
               value={info.chauffage}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de chauffage</option>
               <option value="gaz">Gaz</option>
@@ -225,7 +389,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="bois">Bois</option>
               <option value="granules">Granules</option>
             </select>
-            <span className="error-field">
+            <span id="chauffage-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="chauffage">Type de chauffage </label>
@@ -246,7 +410,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="louee">Louée</option>
               <option value="achetee">Achetée</option>
             </select>
-            <span className="error-field">
+            <span id="fournaise-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="fournaise">Fournaise </label>

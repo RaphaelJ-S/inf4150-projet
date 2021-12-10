@@ -4,26 +4,56 @@ import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
-  const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
   const regPasVide = /^.+$/;
+  const regVideNbrPositif = /^[0-9]*$/;
 
   useEffect(() => {
     validateWholeForm();
   }, []);
 
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
+  const validateWholeForm = () => {
+    let valid = [
+      validateBainPrincipale(false),
+      validateNbrChambreSS(false),
+      validateRecuperateur(false),
+      validateClimatisation(false),
+      validateNbrPieces(false),
+      validateNbrChambreRDC(false),
+      validateNbrChambreEtage(false),
+    ].every(Boolean);
+    if (valid) {
+      setInfo({ ...info, validated: true, validatedSpecInt2: true });
+    } else {
+      setInfo({ ...info, validated: false, validatedSpecInt2: false });
     }
-    validateWholeForm();
   };
 
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
+  const validateInput = (element) => {
+    const elem_id = element.target.id;
+    switch (elem_id) {
+      case "bainPrincipale":
+        validateBainPrincipale(true);
+        break;
+      case "nbrChambreSS":
+        validateNbrChambreSS(true);
+        break;
+      case "nbrChambreEtage":
+        validateNbrChambreEtage(true);
+        break;
+      case "nbrChambreRDC":
+        validateNbrChambreRDC(true);
+        break;
+      case "nbrPieces":
+        validateNbrPieces(true);
+        break;
+      case "climatisation":
+        validateClimatisation(true);
+        break;
+      case "recuperateur":
+        validateRecuperateur(true);
+        break;
+    }
+    validateWholeForm();
   };
 
   const handleChange = (event) => {
@@ -35,6 +65,91 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
     const name = event.target.name;
     const value = !info[name];
     setInfo({ ...info, [name]: value });
+  };
+
+  const validateBainPrincipale = (updtMsg) => {
+    let input = document.querySelector("#bainPrincipale");
+    let err = document.querySelector("#bainPrincipale-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateNbrChambreSS = (updtMsg) => {
+    let input = document.querySelector("#nbrChambreSS");
+    let err = document.querySelector("#nbrChambreSS-error");
+
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateNbrChambreEtage = (updtMsg) => {
+    let input = document.querySelector("#nbrChambreEtage");
+    let err = document.querySelector("#nbrChambreEtage-error");
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateNbrChambreRDC = (updtMsg) => {
+    let input = document.querySelector("#nbrChambreRDC");
+    let err = document.querySelector("#nbrChambreRDC-error");
+    if (regVideNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateNbrPieces = (updtMsg) => {
+    let input = document.querySelector("#nbrPieces");
+    let err = document.querySelector("#nbrPieces-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateClimatisation = (updtMsg) => {
+    let input = document.querySelector("#climatisation");
+    let err = document.querySelector("#climatisation-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateRecuperateur = (updtMsg) => {
+    let input = document.querySelector("#recuperateur");
+    let err = document.querySelector("#recuperateur-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
   };
 
   return (
@@ -50,6 +165,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="recuperateur"
               value={info.recuperateur}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">
                 Sélectionnez s'il y a un ventilateur-récupérateur ou non
@@ -57,8 +173,8 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="non">Non</option>
               <option value="oui">Oui</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="recuperateur-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="recuperateur">
               Ventilateur-récupérateur de chaleur{" "}
@@ -75,6 +191,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="climatisation"
               value={info.climatisation}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de climatisation</option>
               <option value="aucune">Aucune</option>
@@ -82,8 +199,8 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="systemeCentral">Système central</option>
               <option value="fenetre">Fenêtre</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="climatisation-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="climatisation">Type de climatisation </label>
           </div>
@@ -145,15 +262,16 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* début nombre de pièces */}
           <div className="form-floating">
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="nbrPieces"
               name="nbrPieces"
               value={info.nbrPieces}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="nbrPieces-error" className="error-field">
+              Entrez le nombre de pièces au total
             </span>
             <label htmlFor="nbrPieces">Nombre de pièces</label>
           </div>
@@ -162,15 +280,16 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* début nombre chambres à coucher rez-de-chaussée */}
           <div className="form-floating">
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="nbrChambreRDC"
               name="nbrChambreRDC"
               value={info.nbrChambreRDC}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="nbrChambreRDC-error" className="error-field">
+              Vous devez entrer un entier positif
             </span>
             <label htmlFor="nbrChambreRDC">
               Nombre de chambres à coucher : Rez-de-chaussée
@@ -181,15 +300,16 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* début nombre chambres à coucher Etage */}
           <div className="form-floating">
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="nbrChambreEtage"
               name="nbrChambreEtage"
               value={info.nbrChambreEtage}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="nbrChambreEtage-error" className="error-field">
+              Vous devez entrer un entier positif
             </span>
             <label htmlFor="nbrChambreEtage">
               Nombre de chambres à coucher : Étage
@@ -200,13 +320,18 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
           {/* début nombre chambres à coucher sous-sol */}
           <div className="form-floating">
             <input
-              type="number"
+              type="text"
               className="form-control"
               id="nbrChambreSS"
               name="nbrChambreSS"
               value={info.nbrChambreSS}
               onChange={handleChange}
+              onBlur={validateInput}
             />
+            <span id="nbrChambreSS-error" className="error-field">
+              Vous devez entrer un entier positif
+            </span>
+
             <label htmlFor="nbrChambreSS">
               Nombre de chambre à coucher : Sous-sol
             </label>
@@ -228,6 +353,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               value={info.bainPrincipale}
               aria-label="Selection du système électrique"
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">
                 Sélectionnez l'existance d'une salle de bain et ses
@@ -269,7 +395,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
-          <span className="error-field">Le champ Adresse doit être rempli</span>
+          <span id="bainPrincipale-error" className="error-field">
+            Vous devez faire une sélection
+          </span>
           {/* fin salle de bain dans salle coucher principale */}
         </Form>
       </main>

@@ -18,12 +18,15 @@ code {
 .error-field {
   color: rgb(206, 51, 51);
   user-select: none;
+  position: fixed;
   opacity: 0;
 }
 
 .show-error {
   opacity: 1;
-  transition: opacity 0.5s ease-in;
-  -moz-transition: opacity 0.5s ease-in;
-  -webkit-transition: opacity 0.5ss ease-in;
+  position: static;
+  transform: translate(0%, 10%);
+  transition: opacity 0.3s ease-in 0.1s;
+  -moz-transition: opacity 0.3s ease-in 0.1s;
+  -webkit-transition: opacity 0.3s ease-in 0.1s;
 }

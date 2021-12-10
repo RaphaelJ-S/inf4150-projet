@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
-export default function SpecExterieurFormulaire({ info, setInfo}) {
+export default function SpecExterieurFormulaire({ info, setInfo }) {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -14,7 +14,7 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
     <section className="text-center">
       <main className="form-signin">
         <Form>
-        <div className="form-floating">
+          <div className="form-floating">
             <select
               className="form-select"
               aria-label="Selection du type de fondation"
@@ -28,18 +28,18 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
             </select>
             <label htmlFor="fondation">Fondation</label>
           </div>
-          {/** TODO trouver une maniere elegante d'incorporer 
-          * un champ de text dans des form de selections */}
+          {/** TODO trouver une maniere elegante d'incorporer
+           * un champ de text dans des form de selections */}
           <div className="form-floating">
-            <input list="numeroAppartement" 
+            <input
+              list="numeroAppartement"
               className="form-control"
               id="revetExterieur"
-              name="revetExterieur" 
+              name="revetExterieur"
               autoFocus
               onChange={handleChange}
             />
-            <datalist id="revetExterieur">
-            </datalist>
+            <datalist id="revetExterieur"></datalist>
             <label htmlFor="revetExterieur">Revêtement extérieur</label>
           </div>
           <div className="form-floating">
@@ -96,18 +96,18 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
             </select>
             <label htmlFor="etatToiture">État de la toiture</label>
           </div>
-          {/** TODO trouver une maniere elegante d'incorporer 
-          * un  de text dans des form de selections */}
+          {/** TODO trouver une maniere elegante d'incorporer
+           * un  de text dans des form de selections */}
           <div className="form-floating">
-            <input list="numeroAppartement" 
+            <input
+              list="numeroAppartement"
               className="form-control"
               id="tailleTerrain"
-              name="tailleTerrain" 
+              name="tailleTerrain"
               autoFocus
               onChange={handleChange}
             />
-            <datalist id="tailleTerrain">
-            </datalist>
+            <datalist id="tailleTerrain"></datalist>
             <label htmlFor="tailleTerrain">Taille du terrain</label>
           </div>
           {/** plus qu'un choix possible dois faire des case et non un dropdown */}
@@ -120,12 +120,16 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               onChange={handleChange}
             >
               <option value="pelouse">Pelouse</option>
-              <option value="terrasse non couverte">Terrasse (patio) non couverte</option>
+              <option value="terrasse non couverte">
+                Terrasse (patio) non couverte
+              </option>
               <option value="cloture">Clôture</option>
               <option value="boise">Boisé</option>
               <option value="gazebo">Gloriette (Gazebo)</option>
               <option value="haie">Haie</option>
-              <option value="terrasse couverte">Terrasse (patio) couverte</option>
+              <option value="terrasse couverte">
+                Terrasse (patio) couverte
+              </option>
               <option value="cabanon">Cabanon</option>
             </select>
             <label htmlFor="amenagementTerrain">Aménagements extérieurs:</label>
@@ -154,12 +158,16 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               onChange={handleChange}
             >
               <option value="pelouse">Pelouse</option>
-              <option value="terrasse non couverte">Terrasse (patio) non couverte</option>
+              <option value="terrasse non couverte">
+                Terrasse (patio) non couverte
+              </option>
               <option value="cloture">Clôture</option>
               <option value="boise">Boisé</option>
               <option value="gazebo">Gloriette (Gazebo)</option>
               <option value="haie">Haie</option>
-              <option value="terrasse couverte">Terrasse (patio) couverte</option>
+              <option value="terrasse couverte">
+                Terrasse (patio) couverte
+              </option>
               <option value="cabanon">Cabanon</option>
             </select>
             <label htmlFor="amenagementTerrain">État de la toiture</label>
@@ -176,7 +184,9 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               <option value="Non couvert">Non couvert</option>
               <option value="Garage">Garage</option>
             </select>
-            <label htmlFor="stationnementCouverture">Couverture du stationnement: </label>
+            <label htmlFor="stationnementCouverture">
+              Couverture du stationnement:{" "}
+            </label>
           </div>
           <div className="form-floating">
             <select
@@ -190,7 +200,9 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
               <option value="2voiture">2 voitures</option>
               <option value="aucun">Aucun</option>
             </select>
-            <label htmlFor="placeStationnement">Couverture du stationnement: </label>
+            <label htmlFor="placeStationnement">
+              Couverture du stationnement:{" "}
+            </label>
           </div>
           <div className="form-floating">
             <select
@@ -225,5 +237,5 @@ export default function SpecExterieurFormulaire({ info, setInfo}) {
         </Form>
       </main>
     </section>
-  )
+  );
 }

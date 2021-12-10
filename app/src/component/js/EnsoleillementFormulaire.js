@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
@@ -8,23 +8,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
   const regTexteNorm = /^\D+$/;
   const regPasVide = /^.+$/;
 
-  useEffect(() => {
-    validateWholeForm();
-  }, []);
-
   const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
-    }
-    validateWholeForm();
-  };
-
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
-  };
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -40,7 +24,7 @@ export default function EnsoleillementFormulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form noValidate validated={info.validatedSoleil}>
+        <Form noValidate validated={true}>
           {/** début ensoleillement intérieur AM */}
 
           <div className="form-floating">

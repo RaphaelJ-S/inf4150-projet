@@ -1,29 +1,55 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "../../assets/css/bootstrap.min.css";
 import { Form } from "react-bootstrap";
 import "../css/FicheVisite.css";
 
 export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
   const regPasVide = /^.+$/;
 
-  useEffect(() => {
-    validateWholeForm();
-  }, []);
-
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
+  const validateWholeForm = () => {
+    let valid = [
+      validateDesTaille(false),
+      validatePiscine(false),
+      validateChauffePiscine(false),
+      validateTypeStationnement(false),
+      validateNombreStationnement(false),
+      validateEntree(false),
+    ].every(Boolean);
+    if (valid) {
+      setInfo({ ...info, validated: true, validatedSpecEx2: true });
+    } else {
+      setInfo({ ...info, validated: false, validatedSpecEx2: false });
     }
-    validateWholeForm();
   };
 
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
+  const validateInput = (element) => {
+    const elem_id = element.target.id;
+
+    switch (elem_id) {
+      case "desTaille":
+        validateDesTaille(true);
+        break;
+      case "tailleTerrain":
+        validateDesTaille(true);
+        break;
+      case "piscine":
+        validatePiscine(true);
+        break;
+      case "chauffePiscine":
+        validateChauffePiscine(true);
+        break;
+      case "typeStationnement":
+        validateTypeStationnement(true);
+        break;
+      case "nombreStationnement":
+        validateNombreStationnement(true);
+        break;
+      case "entree":
+        validateEntree(true);
+        break;
+    }
+    validateWholeForm();
   };
 
   const handleChange = (event) => {
@@ -36,6 +62,78 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
     const name = event.target.name;
     const value = !info[name];
     setInfo({ ...info, [name]: value });
+  };
+
+  const validateDesTaille = (updtMsg) => {
+    let input = document.querySelector("#desTaille");
+    let err = document.querySelector("#desTaille-error");
+    let inputIn = document.querySelector("#tailleTerrain");
+    if (regPasVide.test(input.value) && regNbrPositif.test(inputIn.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validatePiscine = (updtMsg) => {
+    let input = document.querySelector("#piscine");
+    let err = document.querySelector("#piscine-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateChauffePiscine = (updtMsg) => {
+    let input = document.querySelector("#chauffePiscine");
+    let err = document.querySelector("#chauffePiscine-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateTypeStationnement = (updtMsg) => {
+    let input = document.querySelector("#typeStationnement");
+    let err = document.querySelector("#typeStationnement-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateNombreStationnement = (updtMsg) => {
+    let input = document.querySelector("#nombreStationnement");
+    let err = document.querySelector("#nombreStationnement-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+
+  const validateEntree = (updtMsg) => {
+    let input = document.querySelector("#entree");
+    let err = document.querySelector("#entree-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
   };
 
   return (
@@ -56,8 +154,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               id="desTaille"
               aria-label="Selection de la description de la taille du terrain"
               onChange={handleChange}
+              onBlur={validateInput}
             >
-              <option defaultValue="">
+              <option value="">
                 Sélectionnez la taille relative du terrain
               </option>
               <option value="petit">Petit</option>
@@ -75,6 +174,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
                 placeholder="Entrez la taille du terrain en mètre carré"
                 disabled={info.descriptTaille === ""}
                 onChange={handleChange}
+                onBlur={validateInput}
               />
               <label
                 htmlFor="tailleTerrain"
@@ -84,7 +184,9 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
-          <span className="error-field">Le champ Adresse doit être rempli</span>
+          <span id="desTaille-error" className="error-field">
+            Vous devez faire une sélection et entrer un entier positif
+          </span>
           {/* fin taille terrain */}
 
           {/* début aménagements extérieurs */}
@@ -199,7 +301,6 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               </label>
             </div>
           </div>
-          <span className="error-field">Le champ Adresse doit être rempli</span>
           {/* fin aménagements extérieurs */}
 
           {/* début type piscine */}
@@ -211,15 +312,16 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               id="piscine"
               value={info.piscine}
               onChange={handleChange}
+              onBlur={validateInput}
             >
-              <option defaultValue="">Sélectionnez le type de piscine</option>
+              <option value="">Sélectionnez le type de piscine</option>
               <option value="aucune">Aucune</option>
               <option value="creuse">Creusée</option>
               <option value="semi-creuse">Semi-creusée</option>
               <option value="de surface">De surface</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="piscine-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="amenagementTerrain">Piscine </label>
           </div>
@@ -235,16 +337,15 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               value={info.chauffePiscine}
               disabled={info.piscine === "aucune" || info.piscine === ""}
               onChange={handleChange}
+              onBlur={validateInput}
             >
-              <option defaultValue="">
-                Sélectionnez le type de chauffe-piscine
-              </option>
+              <option value="">Sélectionnez le type de chauffe-piscine</option>
               <option value="aucun">Aucun</option>
               <option value="electrique">Électrique</option>
               <option value="gazNaturel">Gaz naturel</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="chauffePiscine-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="amenagementTerrain">Chauffe-piscine </label>
           </div>
@@ -259,6 +360,7 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               id="typeStationnement"
               value={info.typeStationnement}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de stationnement</option>
               <option value="aucun">Aucun</option>
@@ -266,8 +368,8 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               <option value="nonCouvert">Non-couvert</option>
               <option value="garage">Garage</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="typeStationnement-error" className="error-field">
+              Vous devez faire une sélection{" "}
             </span>
             <label htmlFor="typeStationnement">Type de stationnement </label>
           </div>
@@ -286,15 +388,16 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
                 info.typeStationnement === ""
               }
               onChange={handleChange}
+              onBlur={validateInput}
             >
-              <option defaultValue="">
+              <option value="">
                 Sélectionnez le nombre de place de stationnement
               </option>
               <option value="1">1 voiture</option>
               <option value="2">2 voitures</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="nombreStationnement-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="nombreStationnement">
               Nombre de place de stationnement{" "}
@@ -312,15 +415,16 @@ export default function SpecExterieurPartie2Formulaire({ info, setInfo }) {
               id="entree"
               value={info.entree}
               onChange={handleChange}
+              onBlur={validateInput}
             >
-              <option defaultValue="">Sélectionnez le type d'entrée</option>
+              <option value="">Sélectionnez le type d'entrée</option>
               <option value="asphalte">Asphalte</option>
               <option value="paveBeton">Pavé de béton</option>
               <option value="gravier">Gravier</option>
               <option value="terre">Terre</option>
             </select>
-            <span className="error-field">
-              Le champ Adresse doit être rempli
+            <span id="entree-error" className="error-field">
+              Vous devez faire une sélection
             </span>
             <label htmlFor="entree">Type d'entrée </label>
           </div>

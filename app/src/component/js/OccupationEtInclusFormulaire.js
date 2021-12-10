@@ -2,31 +2,8 @@ import React, { useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { DynamicField } from "./DynamicField";
 
 export default function OccupationEtInclusFormulaire({ info, setInfo }) {
-  const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
-  const regPasVide = /^.+$/;
-
-  useEffect(() => {
-    validateWholeForm();
-  }, []);
-
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
-    }
-    validateWholeForm();
-  };
-
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
-  };
-
   const handleChange = (e) => {
     let uptItems = [...info.inclus];
     uptItems[e.target.id].valeur = e.target.value;
@@ -65,7 +42,7 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
   return (
     <section className="text-center">
       <main className="form-signin">
-        <Form noValidate validated={info.validatedOcc}>
+        <Form noValidate validated={true}>
           <div className="form-floating">
             <input
               type="date"
@@ -75,7 +52,7 @@ export default function OccupationEtInclusFormulaire({ info, setInfo }) {
               value={info.dateOccupation}
               onChange={handleChangeDate}
             />
-            <span className="error-field">
+            <span id="dateOccupation-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="dateOccupation">Date d'occupation</label>

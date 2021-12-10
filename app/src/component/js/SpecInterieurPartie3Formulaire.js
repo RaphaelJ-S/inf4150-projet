@@ -5,25 +5,64 @@ import "../css/FicheVisite.css";
 
 export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
   const regNbrPositif = /^\d+$/;
-  const regTexteNorm = /^\D+$/;
   const regPasVide = /^.+$/;
+  const regVide = /^.*$/;
 
   useEffect(() => {
     validateWholeForm();
   }, []);
 
-  const validateWholeForm = () => {};
-
-  const validateForm = (element) => {
-    const elem_id = element.target.id;
-    const error_text = element.target.nextSibling;
-    switch (elem_id) {
+  const validateWholeForm = () => {
+    let valid = [
+      validateNbrSalleEauToilette(false),
+      validateNbrSalleEauBain(false),
+      validateLaverie(false),
+      validateSalleManger(false),
+      validateSalon(false),
+      validateFoyer(false),
+      validatePoele(false),
+      validateEspaceBureau(false),
+      validateSousSol(false),
+    ].every(Boolean);
+    if (valid) {
+      setInfo({ ...info, validated: true, validatedSpecInt3: true });
+    } else {
+      setInfo({ ...info, validated: false, validatedSpecInt3: false });
     }
-    validateWholeForm();
   };
 
-  const resetError = (element) => {
-    element.target.nextSibling.classList.remove("show-error");
+  const validateInput = (element) => {
+    const elem_id = element.target.id;
+    switch (elem_id) {
+      case "nbrSalleEauToilette":
+        validateNbrSalleEauToilette(true);
+        break;
+      case "nbrSalleEauBain":
+        validateNbrSalleEauBain(true);
+        break;
+      case "laverie":
+        validateLaverie(true);
+        break;
+      case "salleManger":
+        validateSalleManger(true);
+        break;
+      case "salon":
+        validateSalon(true);
+        break;
+      case "foyer":
+        validateFoyer(true);
+        break;
+      case "poele":
+        validatePoele(true);
+        break;
+      case "espaceBureau":
+        validateEspaceBureau(true);
+        break;
+      case "sousSol":
+        validateSousSol(true);
+        break;
+    }
+    validateWholeForm();
   };
 
   const handleChange = (event) => {
@@ -35,6 +74,106 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
     const name = event.target.name;
     const value = !info[name];
     setInfo({ ...info, [name]: value });
+  };
+
+  const validateNbrSalleEauToilette = (updtMsg) => {
+    let input = document.querySelector("#nbrSalleEauToilette");
+    let err = document.querySelector("#nbrSalleEauToilette-error");
+    if (regNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateNbrSalleEauBain = (updtMsg) => {
+    let input = document.querySelector("#nbrSalleEauBain");
+    let err = document.querySelector("#nbrSalleEauBain-error");
+    if (regNbrPositif.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateLaverie = (updtMsg) => {
+    let input = document.querySelector("#laverie");
+    let err = document.querySelector("#laverie-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateSalleManger = (updtMsg) => {
+    let input = document.querySelector("#salleManger");
+    let err = document.querySelector("#salleManger-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateSalon = (updtMsg) => {
+    let input = document.querySelector("#salon");
+    let err = document.querySelector("#salon-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateFoyer = (updtMsg) => {
+    let input = document.querySelector("#foyer");
+    let err = document.querySelector("#foyer-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validatePoele = (updtMsg) => {
+    let input = document.querySelector("#poele");
+    let err = document.querySelector("#poele-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateEspaceBureau = (updtMsg) => {
+    let input = document.querySelector("#espaceBureau");
+    let err = document.querySelector("#espaceBureau-error");
+    if (regPasVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
+  };
+  const validateSousSol = (updtMsg) => {
+    let input = document.querySelector("#sousSol");
+    let err = document.querySelector("#sousSol-error");
+    if (regVide.test(input.value)) {
+      if (updtMsg) err.classList.remove("show-error");
+      return true;
+    } else {
+      if (updtMsg) err.classList.add("show-error");
+      return false;
+    }
   };
 
   return (
@@ -50,8 +189,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               name="nbrSalleEauToilette"
               value={info.nbrSalleEauToilette}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
+            <span id="nbrSalleEauToilette-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="nbrSalleEauToilette">
@@ -69,8 +209,9 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               name="nbrSalleEauBain"
               value={info.nbrSalleEauBain}
               onChange={handleChange}
+              onBlur={validateInput}
             />
-            <span className="error-field">
+            <span id="nbrSalleEauBain-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="nbrSalleEauBain">
@@ -88,13 +229,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="laverie"
               value={info.laverie}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de laverie</option>
               <option value="aucune">Aucune</option>
               <option value="independante">Indépendante</option>
               <option value="jumelee">Jumelée à la salle de toilette</option>
             </select>
-            <span className="error-field">
+            <span id="laverie-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="climatisation">Type de laverie </label>
@@ -110,6 +252,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="salleManger"
               value={info.salleManger}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de salle à manger</option>
               <option value="aucune">Aucune</option>
@@ -117,7 +260,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="jumeleeCuisine">Jumelée à la cuisine</option>
               <option value="jumeleeSalon">Jumelée au salon</option>
             </select>
-            <span className="error-field">
+            <span id="salleManger-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="salleManger">Salle à manger</label>
@@ -132,6 +275,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="salon"
               value={info.salon}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de salon</option>
               <option value="aucun">Aucun</option>
@@ -139,7 +283,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="jumeleeCuisine">Jumelé à la cuisine</option>
               <option value="jumeleeSalon">Jumelé à la salle à manger</option>
             </select>
-            <span className="error-field">
+            <span id="salon-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="salon">Salon</label>
@@ -155,13 +299,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="foyer"
               value={info.foyer}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de foyer</option>
               <option value="aucun">Aucun</option>
               <option value="bois">Bois</option>
               <option value="gaz">Gaz</option>
             </select>
-            <span className="error-field">
+            <span id="foyer-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="foyer">Foyer</label>
@@ -177,13 +322,14 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="poele"
               value={info.poele}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez le type de poêle</option>
               <option value="aucune">Aucun</option>
               <option value="bois">Bois</option>
               <option value="granules">Granules</option>
             </select>
-            <span className="error-field">
+            <span id="poele-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="poele">Poêle</label>
@@ -199,6 +345,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="espaceBureau"
               value={info.espaceBureau}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">
                 Sélectionnez l'existance d'un espace de bureau
@@ -206,7 +353,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="oui">Oui</option>
               <option value="non">Non</option>
             </select>
-            <span className="error-field">
+            <span id="espaceBureau-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="espaceBureau">Espace de bureau</label>
@@ -221,6 +368,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               id="sousSol"
               value={info.sousSol}
               onChange={handleChange}
+              onBlur={validateInput}
             >
               <option value="">Sélectionnez l'état du sous-sol</option>
               <option value="Fini">Fini</option>
@@ -231,7 +379,7 @@ export default function SpecInterieurPartie1Formulaire({ info, setInfo }) {
               <option value="Salle familiale">Salle familiale</option>
               <option value="Rangement">Rangement</option>
             </select>
-            <span className="error-field">
+            <span id="sousSol-error" className="error-field">
               Le champ Adresse doit être rempli
             </span>
             <label htmlFor="sousSol">État du sous-sol</label>
